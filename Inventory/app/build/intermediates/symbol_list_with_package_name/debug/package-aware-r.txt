@@ -1845,6 +1845,7 @@ id easeInOut
 id easeOut
 id edit_query
 id elastic
+id emailInput
 id end
 id endToStart
 id enterAlways
@@ -1974,6 +1975,7 @@ id parent
 id parentPanel
 id parentRelative
 id parent_matrix
+id passwordInput
 id password_toggle
 id path
 id pathRelative

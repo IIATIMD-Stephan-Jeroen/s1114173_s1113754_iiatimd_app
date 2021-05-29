@@ -1,7 +1,16 @@
+com/jackrutorial/androidloginrestfulwebserviceexample/model/ResObj.java
+ com.jackrutorial.androidloginrestfulwebserviceexample.model.ResObj
+com/jackrutorial/androidloginrestfulwebserviceexample/remote/RetrofitClient.java
+ com.jackrutorial.androidloginrestfulwebserviceexample.remote.RetrofitClient
 com/example/inventory/BuildConfig.java
  com.example.inventory.BuildConfig
+com/example/inventory/MainActivity.java
+ com.example.inventory.MainActivity
 com/example/inventory/LoginActivity.java
  com.example.inventory.LoginActivity
  com.example.inventory.LoginActivity$1
-com/example/inventory/MainActivity.java
- com.example.inventory.MainActivity
+ com.example.inventory.LoginActivity$2
+com/jackrutorial/androidloginrestfulwebserviceexample/remote/UserService.java
+ com.jackrutorial.androidloginrestfulwebserviceexample.remote.UserService
+com/jackrutorial/androidloginrestfulwebserviceexample/remote/ApiUtils.java
+ com.jackrutorial.androidloginrestfulwebserviceexample.remote.ApiUtils
