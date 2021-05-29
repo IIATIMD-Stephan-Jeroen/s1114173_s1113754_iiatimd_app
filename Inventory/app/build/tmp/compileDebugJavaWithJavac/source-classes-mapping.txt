@@ -1,4 +1,7 @@
-com/example/inventory/MainActivity.java
- com.example.inventory.MainActivity
 com/example/inventory/BuildConfig.java
  com.example.inventory.BuildConfig
+com/example/inventory/LoginActivity.java
+ com.example.inventory.LoginActivity
+ com.example.inventory.LoginActivity$1
+com/example/inventory/MainActivity.java
+ com.example.inventory.MainActivity

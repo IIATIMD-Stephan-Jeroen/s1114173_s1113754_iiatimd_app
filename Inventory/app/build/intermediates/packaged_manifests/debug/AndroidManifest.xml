@@ -18,7 +18,9 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/Theme.Inventory" >
-        <activity android:name="com.example.inventory.MainActivity" >
+        <activity android:name="com.example.inventory.MainActivity" />
+MainActivity
+        <activity android:name="com.example.inventory.LoginActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
