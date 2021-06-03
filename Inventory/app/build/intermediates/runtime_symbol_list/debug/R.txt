@@ -2781,6 +2781,7 @@ int style Theme_Design_Light_BottomSheetDialog 0x7f0f019c
 int style Theme_Design_Light_NoActionBar 0x7f0f019d
 int style Theme_Design_NoActionBar 0x7f0f019e
 int style Theme_Inventory 0x7f0f019f
+int style Theme_Login 0x7f0f02cc
 int style Theme_MaterialComponents 0x7f0f01a0
 int style Theme_MaterialComponents_BottomSheetDialog 0x7f0f01a1
 int style Theme_MaterialComponents_Bridge 0x7f0f01a2
