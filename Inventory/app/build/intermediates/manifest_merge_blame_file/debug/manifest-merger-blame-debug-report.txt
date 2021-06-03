@@ -15,7 +15,7 @@
 11-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:5:22-64
 12
 13    <application
-13-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:7:5-28:19
+13-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:7:5-34:19
 14        android:allowBackup="true"
 14-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:8:9-35
 15        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
@@ -31,29 +31,36 @@
 20-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:12:9-35
 21        android:testOnly="true" >
 22        <activity
-22-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:14:9-17:20
-23            android:name="com.example.inventory.MainActivity"
-23-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:15:13-41
-24            android:theme="@style/Theme.Inventory" >
-24-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:16:13-51
-25        </activity>
+22-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:15:9-18:57
+23            android:name="com.example.inventory.ProfileActivity"
+23-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:16:13-44
+24            android:parentActivityName="com.example.inventory.MainActivity"
+24-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:18:13-55
+25            android:theme="@style/Theme.Inventory" />
+25-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:17:13-51
 26        <activity
-26-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:19:9-27:20
-27            android:name="com.example.inventory.LoginActivity"
-27-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:20:13-42
-28            android:theme="@style/Theme.Login" >
-28-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:21:13-47
-29            <intent-filter>
-29-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:22:13-26:29
-30                <action android:name="android.intent.action.MAIN" />
-30-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:23:17-69
-30-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:23:25-66
-31
-32                <category android:name="android.intent.category.LAUNCHER" />
-32-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:25:17-77
-32-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:25:27-74
-33            </intent-filter>
-34        </activity>
-35    </application>
-36
-37</manifest>
+26-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:21:9-23:54
+27            android:name="com.example.inventory.MainActivity"
+27-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:22:13-41
+28            android:theme="@style/Theme.Inventory" />
+28-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:23:13-51
+29        <activity
+29-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:25:9-33:20
+30            android:name="com.example.inventory.LoginActivity"
+30-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:26:13-42
+31            android:theme="@style/Theme.Login" >
+31-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:27:13-47
+32            <intent-filter>
+32-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:28:13-32:29
+33                <action android:name="android.intent.action.MAIN" />
+33-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:29:17-69
+33-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:29:25-66
+34
+35                <category android:name="android.intent.category.LAUNCHER" />
+35-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:31:17-77
+35-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:31:27-74
+36            </intent-filter>
+37        </activity>
+38    </application>
+39
+40</manifest>

@@ -20,9 +20,12 @@
         android:supportsRtl="true"
         android:testOnly="true" >
         <activity
+            android:name="com.example.inventory.ProfileActivity"
+            android:parentActivityName="com.example.inventory.MainActivity"
+            android:theme="@style/Theme.Inventory" />
+        <activity
             android:name="com.example.inventory.MainActivity"
-            android:theme="@style/Theme.Inventory" >
-        </activity>
+            android:theme="@style/Theme.Inventory" />
         <activity
             android:name="com.example.inventory.LoginActivity"
             android:theme="@style/Theme.Login" >

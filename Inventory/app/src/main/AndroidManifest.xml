@@ -11,10 +11,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true">
 
+
+        <activity
+            android:name=".ProfileActivity"
+            android:theme="@style/Theme.Inventory"
+            android:parentActivityName=".MainActivity"/>
+
+
         <activity
             android:name=".MainActivity"
-            android:theme="@style/Theme.Inventory">
-        </activity>
+            android:theme="@style/Theme.Inventory" />
 
         <activity
             android:name=".LoginActivity"
@@ -26,6 +32,5 @@
             </intent-filter>
         </activity>
     </application>
-
 
 </manifest>

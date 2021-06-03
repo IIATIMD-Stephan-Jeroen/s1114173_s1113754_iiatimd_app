@@ -1,14 +1,16 @@
 com/example/inventory/BuildConfig.java
  com.example.inventory.BuildConfig
-com/example/inventory/MainActivity.java
- com.example.inventory.MainActivity
+com/example/api/model/Login.java
+ com.example.api.model.Login
 com/example/api/model/User.java
  com.example.api.model.User
 com/example/api/service/UserClient.java
  com.example.api.service.UserClient
-com/example/api/model/Login.java
- com.example.api.model.Login
 com/example/inventory/LoginActivity.java
  com.example.inventory.LoginActivity
  com.example.inventory.LoginActivity$1
  com.example.inventory.LoginActivity$2
+com/example/inventory/ProfileActivity.java
+ com.example.inventory.ProfileActivity
+com/example/inventory/MainActivity.java
+ com.example.inventory.MainActivity
