@@ -14,16 +14,18 @@
 
         <activity
             android:name=".RegisterActivity"
-            android:theme="@style/Theme.Login"
-            />
+            android:theme="@style/Theme.Login" />
 
         <activity
             android:name=".ProfileActivity"
             android:parentActivityName=".MainActivity"
             android:theme="@style/Theme.Inventory" />
+
         <activity
             android:name=".MainActivity"
-            android:theme="@style/Theme.Inventory" />
+            android:theme="@style/Theme.Inventory"
+            android:screenOrientation="portrait"/>
+
         <activity
             android:name=".LoginActivity"
             android:theme="@style/Theme.Login">

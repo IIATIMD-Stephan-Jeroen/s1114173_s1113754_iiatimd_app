@@ -28,6 +28,7 @@
             android:theme="@style/Theme.Inventory" />
         <activity
             android:name="com.example.inventory.MainActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.Inventory" />
         <activity
             android:name="com.example.inventory.LoginActivity"

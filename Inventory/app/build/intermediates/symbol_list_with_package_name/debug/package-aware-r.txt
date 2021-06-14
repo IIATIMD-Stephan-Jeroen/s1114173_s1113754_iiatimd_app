@@ -1783,7 +1783,6 @@ id beginning
 id blocking
 id bottom
 id bounce
-id button2
 id buttonPanel
 id cache_measures
 id cancel_button
@@ -1846,7 +1845,6 @@ id dropdown_menu
 id easeIn
 id easeInOut
 id easeOut
-id editTextTextPassword2
 id edit_query
 id elastic
 id emailInput
@@ -1997,6 +1995,7 @@ id radio
 id ratio
 id rectangles
 id registerEmail
+id registerName
 id registerPassword
 id reverseSawtooth
 id right
