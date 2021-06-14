@@ -13,15 +13,17 @@
 
 
         <activity
+            android:name=".RegisterActivity"
+            android:theme="@style/Theme.Login"
+            />
+
+        <activity
             android:name=".ProfileActivity"
-            android:theme="@style/Theme.Inventory"
-            android:parentActivityName=".MainActivity"/>
-
-
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Theme.Inventory" />
         <activity
             android:name=".MainActivity"
             android:theme="@style/Theme.Inventory" />
-
         <activity
             android:name=".LoginActivity"
             android:theme="@style/Theme.Login">

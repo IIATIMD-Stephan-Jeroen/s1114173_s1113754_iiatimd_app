@@ -1,11 +1,11 @@
 [
     {
-        "merged": "D:\\Projects\\Android\\Inventory\\s1114173_s1113754_iiatimd_app\\Inventory\\app\\build\\intermediates\\res\\merged\\debug\\font_sansation_light.ttf.flat",
-        "source": "D:\\Projects\\Android\\Inventory\\s1114173_s1113754_iiatimd_app\\Inventory\\app\\src\\main\\res\\font\\sansation_light.ttf"
-    },
-    {
         "merged": "D:\\Projects\\Android\\Inventory\\s1114173_s1113754_iiatimd_app\\Inventory\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_launcher_background.png.flat",
         "source": "D:\\Projects\\Android\\Inventory\\s1114173_s1113754_iiatimd_app\\Inventory\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "D:\\Projects\\Android\\Inventory\\s1114173_s1113754_iiatimd_app\\Inventory\\app\\build\\intermediates\\res\\merged\\debug\\font_sansation_light.ttf.flat",
+        "source": "D:\\Projects\\Android\\Inventory\\s1114173_s1113754_iiatimd_app\\Inventory\\app\\src\\main\\res\\font\\sansation_light.ttf"
     },
     {
         "merged": "D:\\Projects\\Android\\Inventory\\s1114173_s1113754_iiatimd_app\\Inventory\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_profile.png.flat",
@@ -122,6 +122,10 @@
     {
         "merged": "D:\\Projects\\Android\\Inventory\\s1114173_s1113754_iiatimd_app\\Inventory\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_main.xml.flat",
         "source": "D:\\Projects\\Android\\Inventory\\s1114173_s1113754_iiatimd_app\\Inventory\\app\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "D:\\Projects\\Android\\Inventory\\s1114173_s1113754_iiatimd_app\\Inventory\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_register.xml.flat",
+        "source": "D:\\Projects\\Android\\Inventory\\s1114173_s1113754_iiatimd_app\\Inventory\\app\\src\\main\\res\\layout\\activity_register.xml"
     },
     {
         "merged": "D:\\Projects\\Android\\Inventory\\s1114173_s1113754_iiatimd_app\\Inventory\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_profile.png.flat",
