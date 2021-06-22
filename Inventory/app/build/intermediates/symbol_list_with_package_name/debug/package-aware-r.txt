@@ -1645,6 +1645,7 @@ drawable design_ic_visibility
 drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
+drawable ic_add
 drawable ic_clock_black_24dp
 drawable ic_keyboard_black_24dp
 drawable ic_launcher_background
@@ -1776,6 +1777,8 @@ id auto
 id autoComplete
 id autoCompleteToEnd
 id autoCompleteToStart
+id bagDescription
+id bagName
 id barrier
 id baseline
 id beginOnFirstDraw
@@ -2190,10 +2193,15 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_add_bag
+layout activity_bag_inventory
+layout activity_filter_inventory
+layout activity_item_detail
 layout activity_login
 layout activity_main
 layout activity_profile
 layout activity_register
+layout bag_card
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog

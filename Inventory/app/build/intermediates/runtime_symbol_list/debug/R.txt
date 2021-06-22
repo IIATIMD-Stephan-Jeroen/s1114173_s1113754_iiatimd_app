@@ -1644,6 +1644,7 @@ int drawable design_ic_visibility 0x7f070062
 int drawable design_ic_visibility_off 0x7f070063
 int drawable design_password_eye 0x7f070064
 int drawable design_snackbar_background 0x7f070065
+int drawable ic_add 0x7f070092
 int drawable ic_clock_black_24dp 0x7f070066
 int drawable ic_keyboard_black_24dp 0x7f070067
 int drawable ic_launcher_background 0x7f070068
@@ -1775,6 +1776,8 @@ int id auto 0x7f09004c
 int id autoComplete 0x7f09004d
 int id autoCompleteToEnd 0x7f09004e
 int id autoCompleteToStart 0x7f09004f
+int id bagDescription 0x7f0901b4
+int id bagName 0x7f0901b5
 int id barrier 0x7f090050
 int id baseline 0x7f090051
 int id beginOnFirstDraw 0x7f090052
@@ -2189,10 +2192,15 @@ int layout abc_search_dropdown_item_icons_2line 0x7f0c0018
 int layout abc_search_view 0x7f0c0019
 int layout abc_select_dialog_material 0x7f0c001a
 int layout abc_tooltip 0x7f0c001b
+int layout activity_add_bag 0x7f0c0072
+int layout activity_bag_inventory 0x7f0c0073
+int layout activity_filter_inventory 0x7f0c0074
+int layout activity_item_detail 0x7f0c0075
 int layout activity_login 0x7f0c001c
 int layout activity_main 0x7f0c001d
 int layout activity_profile 0x7f0c001e
 int layout activity_register 0x7f0c0071
+int layout bag_card 0x7f0c0076
 int layout custom_dialog 0x7f0c001f
 int layout design_bottom_navigation_item 0x7f0c0020
 int layout design_bottom_sheet_dialog 0x7f0c0021

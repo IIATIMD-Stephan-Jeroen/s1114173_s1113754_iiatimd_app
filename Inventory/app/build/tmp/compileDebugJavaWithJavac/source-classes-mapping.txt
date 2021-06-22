@@ -2,19 +2,29 @@ com/example/api/model/User.java
  com.example.api.model.User
 com/example/api/service/UserClient.java
  com.example.api.service.UserClient
-com/example/inventory/ProfileActivity.java
- com.example.inventory.ProfileActivity
-com/example/inventory/MainActivity.java
- com.example.inventory.MainActivity
-com/example/api/model/Register.java
- com.example.api.model.Register
-com/example/api/model/Login.java
- com.example.api.model.Login
 com/example/inventory/BuildConfig.java
  com.example.inventory.BuildConfig
-com/example/inventory/LoginActivity.java
- com.example.inventory.LoginActivity
- com.example.inventory.LoginActivity$1
-com/example/inventory/RegisterActivity.java
- com.example.inventory.RegisterActivity
- com.example.inventory.RegisterActivity$1
+com/example/api/model/Login.java
+ com.example.api.model.Login
+com/example/api/model/Register.java
+ com.example.api.model.Register
+com/example/inventory/activity/ProfileActivity.java
+ com.example.inventory.activity.ProfileActivity
+com/example/inventory/activity/BagInventoryActivity.java
+ com.example.inventory.activity.BagInventoryActivity
+com/example/inventory/activity/RegisterActivity.java
+ com.example.inventory.activity.RegisterActivity
+ com.example.inventory.activity.RegisterActivity$1
+com/example/inventory/activity/ItemDetailActivity.java
+ com.example.inventory.activity.ItemDetailActivity
+com/example/inventory/activity/MainActivity.java
+ com.example.inventory.activity.MainActivity
+com/example/inventory/activity/AddBagActivity.java
+ com.example.inventory.activity.AddBagActivity
+com/example/inventory/adapter/BagAdapter.java
+ com.example.inventory.adapter.BagAdapter
+com/example/inventory/activity/LoginActivity.java
+ com.example.inventory.activity.LoginActivity
+ com.example.inventory.activity.LoginActivity$1
+com/example/inventory/activity/FilterInventoryActivity.java
+ com.example.inventory.activity.FilterInventoryActivity

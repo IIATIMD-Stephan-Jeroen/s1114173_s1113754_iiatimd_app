@@ -19,19 +19,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:testOnly="true" >
+        <activity android:name="com.example.inventory.activity.ItemDetailActivity" />
+        <activity android:name="com.example.inventory.activity.FilterInventoryActivity" />
+        <activity android:name="com.example.inventory.activity.BagInventoryActivity" />
+        <activity android:name="com.example.inventory.activity.AddBagActivity" />
         <activity
-            android:name="com.example.inventory.RegisterActivity"
+            android:name="com.example.inventory.activity.RegisterActivity"
             android:theme="@style/Theme.Login" />
         <activity
-            android:name="com.example.inventory.ProfileActivity"
-            android:parentActivityName="com.example.inventory.MainActivity"
+            android:name="com.example.inventory.activity.ProfileActivity"
+            android:parentActivityName="com.example.inventory.activity.MainActivity"
             android:theme="@style/Theme.Inventory" />
         <activity
-            android:name="com.example.inventory.MainActivity"
+            android:name="com.example.inventory.activity.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Inventory" />
         <activity
-            android:name="com.example.inventory.LoginActivity"
+            android:name="com.example.inventory.activity.LoginActivity"
             android:theme="@style/Theme.Login" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
