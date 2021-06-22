@@ -15,7 +15,6 @@
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:debuggable="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:testOnly="true" >
@@ -32,16 +31,18 @@
             android:theme="@style/Theme.Inventory" />
         <activity
             android:name="com.example.inventory.activity.MainActivity"
+            android:label="BAGS"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.Inventory" />
-        <activity
-            android:name="com.example.inventory.activity.LoginActivity"
-            android:theme="@style/Theme.Login" >
+            android:theme="@style/Theme.Inventory" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.inventory.activity.LoginActivity"
+            android:theme="@style/Theme.Login" >
         </activity>
     </application>
 

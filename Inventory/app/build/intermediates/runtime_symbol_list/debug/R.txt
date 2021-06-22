@@ -1778,6 +1778,7 @@ int id autoCompleteToEnd 0x7f09004e
 int id autoCompleteToStart 0x7f09004f
 int id bagDescription 0x7f0901b4
 int id bagName 0x7f0901b5
+int id bagRecyclerView 0x7f0901b6
 int id barrier 0x7f090050
 int id baseline 0x7f090051
 int id beginOnFirstDraw 0x7f090052

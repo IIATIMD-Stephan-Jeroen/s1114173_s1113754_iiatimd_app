@@ -1779,6 +1779,7 @@ id autoCompleteToEnd
 id autoCompleteToStart
 id bagDescription
 id bagName
+id bagRecyclerView
 id barrier
 id baseline
 id beginOnFirstDraw

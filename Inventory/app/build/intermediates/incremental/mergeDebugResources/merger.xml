@@ -6425,6 +6425,7 @@
         
         <item name="android:statusBarColor" ns2:targetApi="l">?attr/colorPrimaryVariant</item>
         
+        <item name="android:fontFamily">@font/sansation</item>
     </style><style name="Theme.Login" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         
         <item name="colorPrimary">@color/primary</item>
