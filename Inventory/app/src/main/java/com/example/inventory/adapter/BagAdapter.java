@@ -9,16 +9,15 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.data.Bag;
 import com.example.inventory.R;
 
 public class BagAdapter extends RecyclerView.Adapter<BagAdapter.BagViewHolder> {
 
-    private String[] names;
-    private String[] descriptions;
+    private Bag[] bags;
 
-    public BagAdapter(String[] names, String[] descriptions){
-        this.names = names;
-        this.descriptions = descriptions;
+    public BagAdapter(Bag[] bags){
+        this.bags = bags;
     }
 
     public static class BagViewHolder extends RecyclerView.ViewHolder{
@@ -37,19 +36,18 @@ public class BagAdapter extends RecyclerView.Adapter<BagAdapter.BagViewHolder> {
     @Override
     public BagViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = (CardView) LayoutInflater.from(parent.getContext()).inflate(R.layout.bag_card, parent, false);
-        BagViewHolder bagViewHolder = new BagViewHolder(v);
-        return bagViewHolder;
+        return new BagViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull BagAdapter.BagViewHolder holder, int position) {
-        holder.bagName.setText(names[position]);
-        holder.bagDesc.setText(descriptions[position]);
+        holder.bagName.setText(bags[position].getName());
+        holder.bagDesc.setText(bags[position].getDescription());
     }
 
     @Override
     public int getItemCount() {
-        return names.length;
+        return bags.length;
     }
 
 

@@ -82,6 +82,26 @@
 45            android:theme="@style/Theme.Login" >
 45-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:41:13-47
 46        </activity>
-47    </application>
-48
-49</manifest>
+47
+48        <service
+48-->[androidx.room:room-runtime:2.3.0] C:\Users\steph\.gradle\caches\transforms-2\files-2.1\43f856650d9ebd23d57d166c537c37bb\room-runtime-2.3.0\AndroidManifest.xml:25:9-28:40
+49            android:name="androidx.room.MultiInstanceInvalidationService"
+49-->[androidx.room:room-runtime:2.3.0] C:\Users\steph\.gradle\caches\transforms-2\files-2.1\43f856650d9ebd23d57d166c537c37bb\room-runtime-2.3.0\AndroidManifest.xml:26:13-74
+50            android:directBootAware="true"
+50-->[androidx.room:room-runtime:2.3.0] C:\Users\steph\.gradle\caches\transforms-2\files-2.1\43f856650d9ebd23d57d166c537c37bb\room-runtime-2.3.0\AndroidManifest.xml:27:13-43
+51            android:exported="false" />
+51-->[androidx.room:room-runtime:2.3.0] C:\Users\steph\.gradle\caches\transforms-2\files-2.1\43f856650d9ebd23d57d166c537c37bb\room-runtime-2.3.0\AndroidManifest.xml:28:13-37
+52
+53        <provider
+53-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\steph\.gradle\caches\transforms-2\files-2.1\855ddc61a34d58ba3d9ba2b3d08479d5\lifecycle-process-2.2.0\AndroidManifest.xml:25:9-29:43
+54            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
+54-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\steph\.gradle\caches\transforms-2\files-2.1\855ddc61a34d58ba3d9ba2b3d08479d5\lifecycle-process-2.2.0\AndroidManifest.xml:26:13-79
+55            android:authorities="com.example.inventory.lifecycle-process"
+55-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\steph\.gradle\caches\transforms-2\files-2.1\855ddc61a34d58ba3d9ba2b3d08479d5\lifecycle-process-2.2.0\AndroidManifest.xml:27:13-69
+56            android:exported="false"
+56-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\steph\.gradle\caches\transforms-2\files-2.1\855ddc61a34d58ba3d9ba2b3d08479d5\lifecycle-process-2.2.0\AndroidManifest.xml:28:13-37
+57            android:multiprocess="true" />
+57-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\steph\.gradle\caches\transforms-2\files-2.1\855ddc61a34d58ba3d9ba2b3d08479d5\lifecycle-process-2.2.0\AndroidManifest.xml:29:13-40
+58    </application>
+59
+60</manifest>

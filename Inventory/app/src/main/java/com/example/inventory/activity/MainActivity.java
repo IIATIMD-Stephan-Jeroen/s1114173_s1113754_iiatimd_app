@@ -4,14 +4,20 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.data.AppDatabase;
+import com.example.data.Bag;
+import com.example.data.thread.GetBagTask;
+import com.example.data.thread.InsertBagTask;
 import com.example.inventory.R;
 import com.example.inventory.adapter.BagAdapter;
 
@@ -31,16 +37,17 @@ public class MainActivity extends AppCompatActivity {
         bagRecyclerView.setLayoutManager(bagLayoutManager);
         bagRecyclerView.hasFixedSize();
 
-        String[] names = new String[200];
-        String[] descriptions = new String[200];
+        AppDatabase db = AppDatabase.getInstance(getApplicationContext());
 
-        for(int i = 0; i < 200; i++){
-            names[i] = "NAME " + i;
-            descriptions[i] = "DESCRIPTION " + i;
-        }
+        // Bag adapter takes information from a bag and places it on a title card.
+//        bagRecyclerViewAdapter = new BagAdapter(bags);
+//        bagRecyclerView.setAdapter(bagRecyclerViewAdapter);
 
-        bagRecyclerViewAdapter = new BagAdapter(names, descriptions);
-        bagRecyclerView.setAdapter(bagRecyclerViewAdapter);
+
+        // Different threads must be used to do Database operations.
+//        new Thread(new InsertBagTask(db, bags[0])).start();
+
+
     }
 
 
