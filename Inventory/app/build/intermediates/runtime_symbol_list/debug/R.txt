@@ -1815,6 +1815,7 @@ int id beginning 0x7f090056
 int id blocking 0x7f090057
 int id bottom 0x7f090058
 int id bounce 0x7f090059
+int id button 0x7f0901ba
 int id buttonPanel 0x7f09005a
 int id cache_measures 0x7f09005b
 int id cancel_button 0x7f09005c
@@ -1920,6 +1921,8 @@ int id ignore 0x7f0900bf
 int id ignoreRequest 0x7f0900c0
 int id image 0x7f0900c1
 int id info 0x7f0900c2
+int id insertBagDesc 0x7f0901bf
+int id insertBagName 0x7f0901c0
 int id invisible 0x7f0900c3
 int id inward 0x7f0900c4
 int id italic 0x7f0900c5
@@ -2124,6 +2127,8 @@ int id textView 0x7f09018b
 int id textView2 0x7f09018c
 int id textView3 0x7f09018d
 int id textView4 0x7f09018e
+int id textView5 0x7f0901bd
+int id textView6 0x7f0901be
 int id text_input_end_icon 0x7f09018f
 int id text_input_error_icon 0x7f090190
 int id text_input_start_icon 0x7f090191

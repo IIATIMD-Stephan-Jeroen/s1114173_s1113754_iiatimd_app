@@ -1816,6 +1816,7 @@ id beginning
 id blocking
 id bottom
 id bounce
+id button
 id buttonPanel
 id cache_measures
 id cancel_button
@@ -1921,6 +1922,8 @@ id ignore
 id ignoreRequest
 id image
 id info
+id insertBagDesc
+id insertBagName
 id invisible
 id inward
 id italic
@@ -2125,6 +2128,8 @@ id textView
 id textView2
 id textView3
 id textView4
+id textView5
+id textView6
 id text_input_end_icon
 id text_input_error_icon
 id text_input_start_icon
