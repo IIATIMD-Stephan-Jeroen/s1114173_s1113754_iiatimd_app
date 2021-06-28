@@ -1793,6 +1793,7 @@ id action_text
 id actions
 id activity_chooser_view_content
 id add
+id addBagButton
 id addNewBagButton
 id alertTitle
 id aligned
@@ -1816,7 +1817,6 @@ id beginning
 id blocking
 id bottom
 id bounce
-id button
 id buttonPanel
 id cache_measures
 id cancel_button

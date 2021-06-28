@@ -9,8 +9,7 @@ import com.example.inventory.R;
 
 public class BagInventoryActivity extends AppCompatActivity {
 
-    private EditText insertBagName;
-    private EditText insertBagDesc;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

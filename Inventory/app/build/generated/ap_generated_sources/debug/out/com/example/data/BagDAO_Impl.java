@@ -109,9 +109,10 @@ public final class BagDAO_Impl implements BagDAO {
         } else {
           _tmpDescription = _cursor.getString(_cursorIndexOfDescription);
         }
+        _item = new Bag(_tmpName,_tmpDescription);
         final int _tmpId;
         _tmpId = _cursor.getInt(_cursorIndexOfId);
-        _item = new Bag(_tmpName,_tmpDescription,_tmpId);
+        _item.setId(_tmpId);
         _result.add(_item);
       }
       return _result;

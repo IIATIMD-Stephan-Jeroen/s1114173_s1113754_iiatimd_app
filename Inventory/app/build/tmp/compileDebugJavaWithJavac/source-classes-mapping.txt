@@ -23,8 +23,6 @@ com/example/inventory/activity/ProfileActivity.java
  com.example.inventory.activity.ProfileActivity
 com/example/inventory/activity/BagInventoryActivity.java
  com.example.inventory.activity.BagInventoryActivity
-com/example/data/AgentAsyncTask.java
- com.example.data.AgentAsyncTask
 com/example/inventory/activity/RegisterActivity.java
  com.example.inventory.activity.RegisterActivity
  com.example.inventory.activity.RegisterActivity$1

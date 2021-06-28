@@ -16,8 +16,11 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.data.AppDatabase;
+import com.example.data.Bag;
+import com.example.data.thread.GetBagTask;
 import com.example.data.thread.InsertBagTask;
 import com.example.inventory.R;
+import com.example.inventory.adapter.BagAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -43,15 +46,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         AppDatabase db = AppDatabase.getInstance(getApplicationContext());
 
+
+
         // Bag adapter takes information from a bag and places it on a title card.
-        // bagRecyclerViewAdapter = new BagAdapter(bags);
-        // bagRecyclerView.setAdapter(bagRecyclerViewAdapter);
+//         bagRecyclerViewAdapter = new BagAdapter(bags);
+//         bagRecyclerView.setAdapter(bagRecyclerViewAdapter);
 
 
         // Different threads must be used to do Database operations.
         // new Thread(new InsertBagTask(db, bags[0])).start();
-
-
     }
 
 

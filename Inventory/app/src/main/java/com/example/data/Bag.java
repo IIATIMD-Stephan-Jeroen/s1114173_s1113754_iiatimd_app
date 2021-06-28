@@ -16,7 +16,7 @@ public class Bag {
     @PrimaryKey(autoGenerate = true)
     private int id;
 
-    public Bag(String name, String description, int id){
+    public Bag(String name, String description){
         this.name = name;
         this.description = description;
     }

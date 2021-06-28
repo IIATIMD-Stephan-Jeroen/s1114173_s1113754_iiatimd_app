@@ -12,6 +12,6 @@ public class GetBagTask implements Runnable{
 
     @Override
     public void run() {
-
+        db.bagDAO().getAllBags();
     }
 }
