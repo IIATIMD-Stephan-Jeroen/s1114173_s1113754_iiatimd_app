@@ -18,8 +18,6 @@ import com.example.inventory.R;
 
 public class AddBagActivity extends AppCompatActivity implements View.OnClickListener {
 
-    AppDatabase db;
-
     public String bagName;
     public String bagDesc;
 
@@ -37,8 +35,6 @@ public class AddBagActivity extends AppCompatActivity implements View.OnClickLis
         addBagButton = findViewById(R.id.addBagButton);
 
         addBagButton.setOnClickListener(this);
-
-        db = AppDatabase.getInstance(getApplicationContext());
     }
 
     @Override
@@ -49,11 +45,9 @@ public class AddBagActivity extends AppCompatActivity implements View.OnClickLis
             bagName = insertBagName.getText().toString();
             bagDesc = insertBagDesc.getText().toString();
 
-            //Put values in a Bag
-            new Thread(new InsertBagTask(db, new Bag(bagName, bagDesc))).start();
+            // Add bag to Database and close
+            saveNewBag(bagName, bagDesc);
 
-            // go back to bags screen
-            startActivity(new Intent(AddBagActivity.this, MainActivity.class));
         }
         else {
             Toast.makeText(this, "Inputs cannot be empty", Toast.LENGTH_SHORT).show();
@@ -63,5 +57,14 @@ public class AddBagActivity extends AppCompatActivity implements View.OnClickLis
 
     private boolean isEmpty(EditText editText){
         return editText.getText().toString().trim().length() <= 0;
+    }
+
+    private void saveNewBag(String bagName, String bagDesc){
+        AppDatabase db = AppDatabase.getInstance(this.getApplicationContext());
+
+        Bag bag = new Bag(bagName, bagDesc);
+        db.bagDAO().InsertBag(bag);
+
+        finish();
     }
 }

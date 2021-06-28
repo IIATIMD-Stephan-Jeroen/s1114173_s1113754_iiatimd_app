@@ -1,5 +1,6 @@
 package com.example.inventory.adapter;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,12 +13,39 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.data.Bag;
 import com.example.inventory.R;
 
+import java.util.List;
+
 public class BagAdapter extends RecyclerView.Adapter<BagAdapter.BagViewHolder> {
 
-    private Bag[] bags;
+    private Context context;
+    private List<Bag> bagList;
 
-    public BagAdapter(Bag[] bags){
-        this.bags = bags;
+    public BagAdapter(Context context){
+        this.context = context;
+    }
+
+    public void setBagList(List<Bag> bagList){
+        this.bagList = bagList;
+        notifyDataSetChanged();
+    }
+
+    @NonNull
+    @Override
+    public BagAdapter.BagViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
+        View v = LayoutInflater.from(context).inflate(R.layout.bag_card, parent, false);
+        return new BagViewHolder(v);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull BagAdapter.BagViewHolder holder, int position) {
+        holder.bagName.setText(bagList.get(position).getName());
+        holder.bagDesc.setText(bagList.get(position).getDescription());
+    }
+
+    @Override
+    public int getItemCount() {
+        return this.bagList.size();
     }
 
     public static class BagViewHolder extends RecyclerView.ViewHolder{
@@ -30,24 +58,6 @@ public class BagAdapter extends RecyclerView.Adapter<BagAdapter.BagViewHolder> {
             bagName = v.findViewById(R.id.bagName);
             bagDesc = v.findViewById(R.id.bagDescription);
         }
-    }
-
-    @NonNull
-    @Override
-    public BagViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = (CardView) LayoutInflater.from(parent.getContext()).inflate(R.layout.bag_card, parent, false);
-        return new BagViewHolder(v);
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull BagAdapter.BagViewHolder holder, int position) {
-        holder.bagName.setText(bags[position].getName());
-        holder.bagDesc.setText(bags[position].getDescription());
-    }
-
-    @Override
-    public int getItemCount() {
-        return bags.length;
     }
 
 

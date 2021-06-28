@@ -2,11 +2,13 @@ package com.example.inventory.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LiveData;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.room.Room;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -18,18 +20,21 @@ import android.widget.Toast;
 import com.example.data.AppDatabase;
 import com.example.data.Bag;
 import com.example.data.thread.GetBagTask;
-import com.example.data.thread.InsertBagTask;
 import com.example.inventory.R;
 import com.example.inventory.adapter.BagAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private RecyclerView bagRecyclerView;
-    private RecyclerView.Adapter bagRecyclerViewAdapter;
-    private RecyclerView.LayoutManager bagLayoutManager;
+    public List<Bag> bagList;
 
+    private BagAdapter bagAdapter;
+    private RecyclerView bagRecyclerView;
     private FloatingActionButton addNewBagButton;
+
+    private RecyclerView.LayoutManager bagLayoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,22 +44,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         addNewBagButton = findViewById(R.id.addNewBagButton);
         addNewBagButton.setOnClickListener(this);
 
-        bagRecyclerView = findViewById(R.id.bagRecyclerView);
-        bagLayoutManager = new LinearLayoutManager(this);
-        bagRecyclerView.setLayoutManager(bagLayoutManager);
-        bagRecyclerView.hasFixedSize();
-
-        AppDatabase db = AppDatabase.getInstance(getApplicationContext());
-
-
-
-        // Bag adapter takes information from a bag and places it on a title card.
-//         bagRecyclerViewAdapter = new BagAdapter(bags);
-//         bagRecyclerView.setAdapter(bagRecyclerViewAdapter);
-
-
-        // Different threads must be used to do Database operations.
-        // new Thread(new InsertBagTask(db, bags[0])).start();
+        initRecyclerView();
+        loadBagList();
     }
 
 
@@ -81,4 +72,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         startActivity(new Intent(MainActivity.this, AddBagActivity.class));
     }
+
+    private void initRecyclerView(){
+        Log.d("Debug", "Initiated Recyclerview");
+
+        bagRecyclerView = findViewById(R.id.bagRecyclerView);
+        bagRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        bagRecyclerView.hasFixedSize();
+
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
+        bagRecyclerView.addItemDecoration(dividerItemDecoration);
+
+        bagAdapter = new BagAdapter(this);
+
+        bagRecyclerView.setAdapter(bagAdapter);
+    }
+
+    private void loadBagList(){
+        Log.d("Debug", "Starting Data Acquiring");
+        AppDatabase db = AppDatabase.getInstance(this.getApplicationContext());
+
+        AsyncTask.execute(new GetBagTask(db));
+        Log.d("Debug", "Async Task");
+
+        
+
+//        List<Bag> bagList = db.bagDAO().getAllBags();
+        Log.d("Debug", "Data Acquired");
+        bagAdapter.setBagList(bagList);
+    }
+
 }

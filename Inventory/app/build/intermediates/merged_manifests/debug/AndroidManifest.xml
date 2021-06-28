@@ -18,6 +18,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:testOnly="true" >
+        <activity
+            android:name="com.example.inventory.activity.BagMenuActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Inventory" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name="com.example.inventory.activity.ItemDetailActivity" />
         <activity android:name="com.example.inventory.activity.FilterInventoryActivity" />
         <activity android:name="com.example.inventory.activity.BagInventoryActivity" />
@@ -38,16 +48,10 @@
             android:label="BAGS"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Inventory" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name="com.example.inventory.activity.LoginActivity"
-            android:theme="@style/Theme.Login" >
-        </activity>
+            android:theme="@style/Theme.Login" />
 
         <service
             android:name="androidx.room.MultiInstanceInvalidationService"
