@@ -33,9 +33,9 @@ public final class AppDatabase_Impl extends AppDatabase {
     final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(configuration, new RoomOpenHelper.Delegate(5) {
       @Override
       public void createAllTables(SupportSQLiteDatabase _db) {
-        _db.execSQL("CREATE TABLE IF NOT EXISTS `Bag` (`name` TEXT, `description` TEXT, `id` INTEGER NOT NULL, PRIMARY KEY(`id`))");
+        _db.execSQL("CREATE TABLE IF NOT EXISTS `Bag` (`name` TEXT, `description` TEXT, `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)");
         _db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '4554e3b94324539a0e191d63346239f5')");
+        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '3dadc02493ffb824b80980da602f6e38')");
       }
 
       @Override
@@ -94,7 +94,7 @@ public final class AppDatabase_Impl extends AppDatabase {
         }
         return new RoomOpenHelper.ValidationResult(true, null);
       }
-    }, "4554e3b94324539a0e191d63346239f5", "312ab4ca91de07ea4552c9e45ac25712");
+    }, "3dadc02493ffb824b80980da602f6e38", "8042246ea946fc2b424d2344cf2fa856");
     final SupportSQLiteOpenHelper.Configuration _sqliteConfig = SupportSQLiteOpenHelper.Configuration.builder(configuration.context)
         .name(configuration.name)
         .callback(_openCallback)

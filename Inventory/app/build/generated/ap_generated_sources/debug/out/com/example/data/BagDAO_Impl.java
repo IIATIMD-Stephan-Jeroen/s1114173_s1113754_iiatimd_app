@@ -29,7 +29,7 @@ public final class BagDAO_Impl implements BagDAO {
     this.__insertionAdapterOfBag = new EntityInsertionAdapter<Bag>(__db) {
       @Override
       public String createQuery() {
-        return "INSERT OR ABORT INTO `Bag` (`name`,`description`,`id`) VALUES (?,?,?)";
+        return "INSERT OR ABORT INTO `Bag` (`name`,`description`,`id`) VALUES (?,?,nullif(?, 0))";
       }
 
       @Override
@@ -85,7 +85,7 @@ public final class BagDAO_Impl implements BagDAO {
   }
 
   @Override
-  public List<Bag> getAll() {
+  public List<Bag> getAllBags() {
     final String _sql = "SELECT * FROM bag";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
     __db.assertNotSuspendingTransaction();

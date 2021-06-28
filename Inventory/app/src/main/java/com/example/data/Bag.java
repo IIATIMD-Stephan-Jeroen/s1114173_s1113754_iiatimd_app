@@ -13,13 +13,12 @@ public class Bag {
     @ColumnInfo
     private String description;
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     private int id;
 
     public Bag(String name, String description, int id){
         this.name = name;
         this.description = description;
-        this.id = id;
     }
 
     public String getName() {

@@ -21,7 +21,11 @@
         <activity android:name="com.example.inventory.activity.ItemDetailActivity" />
         <activity android:name="com.example.inventory.activity.FilterInventoryActivity" />
         <activity android:name="com.example.inventory.activity.BagInventoryActivity" />
-        <activity android:name="com.example.inventory.activity.AddBagActivity" />
+        <activity
+            android:name="com.example.inventory.activity.AddBagActivity"
+            android:label="ADD BAG"
+            android:parentActivityName="com.example.inventory.activity.MainActivity"
+            android:theme="@style/Theme.Inventory" />
         <activity
             android:name="com.example.inventory.activity.RegisterActivity"
             android:theme="@style/Theme.Login" />

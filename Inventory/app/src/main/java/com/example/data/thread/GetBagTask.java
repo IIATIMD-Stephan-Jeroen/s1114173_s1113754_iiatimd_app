@@ -12,6 +12,6 @@ public class GetBagTask implements Runnable{
 
     @Override
     public void run() {
-        String name = db.bagDAO().getAll().get(0).getName();
+
     }
 }

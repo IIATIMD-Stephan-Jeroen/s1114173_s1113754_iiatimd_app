@@ -8,12 +8,12 @@
         "source": "D:\\Projects\\Android\\Inventory\\s1114173_s1113754_iiatimd_app\\Inventory\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_launcher_background.png"
     },
     {
-        "merged": "D:\\Projects\\Android\\Inventory\\s1114173_s1113754_iiatimd_app\\Inventory\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_profile.xml.flat",
-        "source": "D:\\Projects\\Android\\Inventory\\s1114173_s1113754_iiatimd_app\\Inventory\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_profile.xml"
-    },
-    {
         "merged": "D:\\Projects\\Android\\Inventory\\s1114173_s1113754_iiatimd_app\\Inventory\\app\\build\\intermediates\\res\\merged\\debug\\layout_bag_card.xml.flat",
         "source": "D:\\Projects\\Android\\Inventory\\s1114173_s1113754_iiatimd_app\\Inventory\\app\\src\\main\\res\\layout\\bag_card.xml"
+    },
+    {
+        "merged": "D:\\Projects\\Android\\Inventory\\s1114173_s1113754_iiatimd_app\\Inventory\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_profile.xml.flat",
+        "source": "D:\\Projects\\Android\\Inventory\\s1114173_s1113754_iiatimd_app\\Inventory\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_profile.xml"
     },
     {
         "merged": "D:\\Projects\\Android\\Inventory\\s1114173_s1113754_iiatimd_app\\Inventory\\app\\build\\intermediates\\res\\merged\\debug\\font_sansation_regular.ttf.flat",
@@ -28,12 +28,12 @@
         "source": "D:\\Projects\\Android\\Inventory\\s1114173_s1113754_iiatimd_app\\Inventory\\app\\src\\main\\res\\layout\\activity_filter_inventory.xml"
     },
     {
-        "merged": "D:\\Projects\\Android\\Inventory\\s1114173_s1113754_iiatimd_app\\Inventory\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_add.png.flat",
-        "source": "D:\\Projects\\Android\\Inventory\\s1114173_s1113754_iiatimd_app\\Inventory\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_add.png"
-    },
-    {
         "merged": "D:\\Projects\\Android\\Inventory\\s1114173_s1113754_iiatimd_app\\Inventory\\app\\build\\intermediates\\res\\merged\\debug\\font_sansation.xml.flat",
         "source": "D:\\Projects\\Android\\Inventory\\s1114173_s1113754_iiatimd_app\\Inventory\\app\\src\\main\\res\\font\\sansation.xml"
+    },
+    {
+        "merged": "D:\\Projects\\Android\\Inventory\\s1114173_s1113754_iiatimd_app\\Inventory\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_add.png.flat",
+        "source": "D:\\Projects\\Android\\Inventory\\s1114173_s1113754_iiatimd_app\\Inventory\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_add.png"
     },
     {
         "merged": "D:\\Projects\\Android\\Inventory\\s1114173_s1113754_iiatimd_app\\Inventory\\app\\build\\intermediates\\res\\merged\\debug\\font_sansation_bold.ttf.flat",
@@ -116,12 +116,12 @@
         "source": "D:\\Projects\\Android\\Inventory\\s1114173_s1113754_iiatimd_app\\Inventory\\app\\src\\main\\res\\layout\\activity_main.xml"
     },
     {
-        "merged": "D:\\Projects\\Android\\Inventory\\s1114173_s1113754_iiatimd_app\\Inventory\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_add.png.flat",
-        "source": "D:\\Projects\\Android\\Inventory\\s1114173_s1113754_iiatimd_app\\Inventory\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_add.png"
-    },
-    {
         "merged": "D:\\Projects\\Android\\Inventory\\s1114173_s1113754_iiatimd_app\\Inventory\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_profile.xml.flat",
         "source": "D:\\Projects\\Android\\Inventory\\s1114173_s1113754_iiatimd_app\\Inventory\\app\\src\\main\\res\\layout\\activity_profile.xml"
+    },
+    {
+        "merged": "D:\\Projects\\Android\\Inventory\\s1114173_s1113754_iiatimd_app\\Inventory\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_add.png.flat",
+        "source": "D:\\Projects\\Android\\Inventory\\s1114173_s1113754_iiatimd_app\\Inventory\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_add.png"
     },
     {
         "merged": "D:\\Projects\\Android\\Inventory\\s1114173_s1113754_iiatimd_app\\Inventory\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_launcher_background.png.flat",

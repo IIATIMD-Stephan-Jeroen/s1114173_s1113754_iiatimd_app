@@ -12,25 +12,29 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.data.AppDatabase;
-import com.example.data.Bag;
-import com.example.data.thread.GetBagTask;
 import com.example.data.thread.InsertBagTask;
 import com.example.inventory.R;
-import com.example.inventory.adapter.BagAdapter;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private RecyclerView bagRecyclerView;
     private RecyclerView.Adapter bagRecyclerViewAdapter;
     private RecyclerView.LayoutManager bagLayoutManager;
 
+    private FloatingActionButton addNewBagButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        addNewBagButton = findViewById(R.id.addNewBagButton);
+        addNewBagButton.setOnClickListener(this);
 
         bagRecyclerView = findViewById(R.id.bagRecyclerView);
         bagLayoutManager = new LinearLayoutManager(this);
@@ -40,12 +44,12 @@ public class MainActivity extends AppCompatActivity {
         AppDatabase db = AppDatabase.getInstance(getApplicationContext());
 
         // Bag adapter takes information from a bag and places it on a title card.
-//        bagRecyclerViewAdapter = new BagAdapter(bags);
-//        bagRecyclerView.setAdapter(bagRecyclerViewAdapter);
+        // bagRecyclerViewAdapter = new BagAdapter(bags);
+        // bagRecyclerView.setAdapter(bagRecyclerViewAdapter);
 
 
         // Different threads must be used to do Database operations.
-//        new Thread(new InsertBagTask(db, bags[0])).start();
+        // new Thread(new InsertBagTask(db, bags[0])).start();
 
 
     }
@@ -68,5 +72,10 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, ProfileActivity.class));
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(View v) {
+        startActivity(new Intent(MainActivity.this, AddBagActivity.class));
     }
 }

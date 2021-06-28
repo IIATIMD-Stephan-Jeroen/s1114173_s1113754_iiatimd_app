@@ -15,7 +15,7 @@
 11-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:5:22-64
 12
 13    <application
-13-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:7:5-44:19
+13-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:7:5-50:19
 14        android:allowBackup="true"
 14-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:8:9-35
 15        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
@@ -37,71 +37,78 @@
 23        <activity android:name="com.example.inventory.activity.BagInventoryActivity" />
 23-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:15:9-67
 23-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:15:19-64
-24        <activity android:name="com.example.inventory.activity.AddBagActivity" />
-24-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:16:9-61
-24-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:16:19-58
-25        <activity
-25-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:18:9-20:50
-26            android:name="com.example.inventory.activity.RegisterActivity"
-26-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:19:13-54
-27            android:theme="@style/Theme.Login" />
-27-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:20:13-47
-28        <activity
-28-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:22:9-25:54
-29            android:name="com.example.inventory.activity.ProfileActivity"
-29-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:23:13-53
-30            android:parentActivityName="com.example.inventory.activity.MainActivity"
-30-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:24:13-64
-31            android:theme="@style/Theme.Inventory" />
-31-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:25:13-51
+24        <activity
+24-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:18:9-22:66
+25            android:name="com.example.inventory.activity.AddBagActivity"
+25-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:19:13-52
+26            android:label="ADD BAG"
+26-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:21:13-36
+27            android:parentActivityName="com.example.inventory.activity.MainActivity"
+27-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:22:13-64
+28            android:theme="@style/Theme.Inventory" />
+28-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:20:13-51
+29        <activity
+29-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:24:9-26:50
+30            android:name="com.example.inventory.activity.RegisterActivity"
+30-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:25:13-54
+31            android:theme="@style/Theme.Login" />
+31-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:26:13-47
 32        <activity
-32-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:27:9-37:20
-33            android:name="com.example.inventory.activity.MainActivity"
-33-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:28:13-50
-34            android:label="BAGS"
-34-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:30:13-33
-35            android:screenOrientation="portrait"
-35-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:29:13-49
-36            android:theme="@style/Theme.Inventory" >
-36-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:31:13-51
-37            <intent-filter>
-37-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:32:13-36:29
-38                <action android:name="android.intent.action.MAIN" />
-38-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:33:17-69
-38-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:33:25-66
-39
-40                <category android:name="android.intent.category.LAUNCHER" />
-40-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:35:17-77
-40-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:35:27-74
-41            </intent-filter>
-42        </activity>
-43        <activity
-43-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:39:9-43:20
-44            android:name="com.example.inventory.activity.LoginActivity"
-44-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:40:13-51
-45            android:theme="@style/Theme.Login" >
-45-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:41:13-47
+32-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:28:9-31:54
+33            android:name="com.example.inventory.activity.ProfileActivity"
+33-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:29:13-53
+34            android:parentActivityName="com.example.inventory.activity.MainActivity"
+34-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:30:13-64
+35            android:theme="@style/Theme.Inventory" />
+35-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:31:13-51
+36        <activity
+36-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:33:9-43:20
+37            android:name="com.example.inventory.activity.MainActivity"
+37-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:34:13-50
+38            android:label="BAGS"
+38-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:36:13-33
+39            android:screenOrientation="portrait"
+39-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:35:13-49
+40            android:theme="@style/Theme.Inventory" >
+40-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:37:13-51
+41            <intent-filter>
+41-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:38:13-42:29
+42                <action android:name="android.intent.action.MAIN" />
+42-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:39:17-69
+42-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:39:25-66
+43
+44                <category android:name="android.intent.category.LAUNCHER" />
+44-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:41:17-77
+44-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:41:27-74
+45            </intent-filter>
 46        </activity>
-47
-48        <service
-48-->[androidx.room:room-runtime:2.3.0] C:\Users\steph\.gradle\caches\transforms-2\files-2.1\43f856650d9ebd23d57d166c537c37bb\room-runtime-2.3.0\AndroidManifest.xml:25:9-28:40
-49            android:name="androidx.room.MultiInstanceInvalidationService"
-49-->[androidx.room:room-runtime:2.3.0] C:\Users\steph\.gradle\caches\transforms-2\files-2.1\43f856650d9ebd23d57d166c537c37bb\room-runtime-2.3.0\AndroidManifest.xml:26:13-74
-50            android:directBootAware="true"
-50-->[androidx.room:room-runtime:2.3.0] C:\Users\steph\.gradle\caches\transforms-2\files-2.1\43f856650d9ebd23d57d166c537c37bb\room-runtime-2.3.0\AndroidManifest.xml:27:13-43
-51            android:exported="false" />
-51-->[androidx.room:room-runtime:2.3.0] C:\Users\steph\.gradle\caches\transforms-2\files-2.1\43f856650d9ebd23d57d166c537c37bb\room-runtime-2.3.0\AndroidManifest.xml:28:13-37
-52
-53        <provider
-53-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\steph\.gradle\caches\transforms-2\files-2.1\855ddc61a34d58ba3d9ba2b3d08479d5\lifecycle-process-2.2.0\AndroidManifest.xml:25:9-29:43
-54            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
-54-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\steph\.gradle\caches\transforms-2\files-2.1\855ddc61a34d58ba3d9ba2b3d08479d5\lifecycle-process-2.2.0\AndroidManifest.xml:26:13-79
-55            android:authorities="com.example.inventory.lifecycle-process"
-55-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\steph\.gradle\caches\transforms-2\files-2.1\855ddc61a34d58ba3d9ba2b3d08479d5\lifecycle-process-2.2.0\AndroidManifest.xml:27:13-69
-56            android:exported="false"
-56-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\steph\.gradle\caches\transforms-2\files-2.1\855ddc61a34d58ba3d9ba2b3d08479d5\lifecycle-process-2.2.0\AndroidManifest.xml:28:13-37
-57            android:multiprocess="true" />
-57-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\steph\.gradle\caches\transforms-2\files-2.1\855ddc61a34d58ba3d9ba2b3d08479d5\lifecycle-process-2.2.0\AndroidManifest.xml:29:13-40
-58    </application>
-59
-60</manifest>
+47        <activity
+47-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:45:9-49:20
+48            android:name="com.example.inventory.activity.LoginActivity"
+48-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:46:13-51
+49            android:theme="@style/Theme.Login" >
+49-->D:\Projects\Android\Inventory\s1114173_s1113754_iiatimd_app\Inventory\app\src\main\AndroidManifest.xml:47:13-47
+50        </activity>
+51
+52        <service
+52-->[androidx.room:room-runtime:2.3.0] C:\Users\steph\.gradle\caches\transforms-2\files-2.1\43f856650d9ebd23d57d166c537c37bb\room-runtime-2.3.0\AndroidManifest.xml:25:9-28:40
+53            android:name="androidx.room.MultiInstanceInvalidationService"
+53-->[androidx.room:room-runtime:2.3.0] C:\Users\steph\.gradle\caches\transforms-2\files-2.1\43f856650d9ebd23d57d166c537c37bb\room-runtime-2.3.0\AndroidManifest.xml:26:13-74
+54            android:directBootAware="true"
+54-->[androidx.room:room-runtime:2.3.0] C:\Users\steph\.gradle\caches\transforms-2\files-2.1\43f856650d9ebd23d57d166c537c37bb\room-runtime-2.3.0\AndroidManifest.xml:27:13-43
+55            android:exported="false" />
+55-->[androidx.room:room-runtime:2.3.0] C:\Users\steph\.gradle\caches\transforms-2\files-2.1\43f856650d9ebd23d57d166c537c37bb\room-runtime-2.3.0\AndroidManifest.xml:28:13-37
+56
+57        <provider
+57-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\steph\.gradle\caches\transforms-2\files-2.1\855ddc61a34d58ba3d9ba2b3d08479d5\lifecycle-process-2.2.0\AndroidManifest.xml:25:9-29:43
+58            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
+58-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\steph\.gradle\caches\transforms-2\files-2.1\855ddc61a34d58ba3d9ba2b3d08479d5\lifecycle-process-2.2.0\AndroidManifest.xml:26:13-79
+59            android:authorities="com.example.inventory.lifecycle-process"
+59-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\steph\.gradle\caches\transforms-2\files-2.1\855ddc61a34d58ba3d9ba2b3d08479d5\lifecycle-process-2.2.0\AndroidManifest.xml:27:13-69
+60            android:exported="false"
+60-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\steph\.gradle\caches\transforms-2\files-2.1\855ddc61a34d58ba3d9ba2b3d08479d5\lifecycle-process-2.2.0\AndroidManifest.xml:28:13-37
+61            android:multiprocess="true" />
+61-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\steph\.gradle\caches\transforms-2\files-2.1\855ddc61a34d58ba3d9ba2b3d08479d5\lifecycle-process-2.2.0\AndroidManifest.xml:29:13-40
+62    </application>
+63
+64</manifest>
