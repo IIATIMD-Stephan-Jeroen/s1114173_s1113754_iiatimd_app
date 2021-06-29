@@ -23,6 +23,8 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.data.AppDatabase;
 import com.example.data.Bag;
+import com.example.data.Item;
+import com.example.data.ItemDatabase;
 import com.example.data.thread.GetBagTask;
 import com.example.data.thread.InsertBagTask;
 import com.example.inventory.R;
@@ -31,6 +33,8 @@ import com.example.inventory.adapter.BagAdapter;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.List;
 
 import retrofit2.http.GET;
 
@@ -71,14 +75,27 @@ public class MainActivity extends AppCompatActivity {
                         for(int i = 0; i < response.length(); i++) {
                             try{
                                 JSONObject objectInArray = response.getJSONObject(i);
-                                Log.d("Rest response", objectInArray.toString());
+                                int itemId = objectInArray.getInt("id");
+                                String itemName = objectInArray.getString("name");
+                                addNewItem(itemId, itemName);
                             } catch (JSONException e) {
                                 Log.e("Rest error", e.toString());
                             }
 
 
                         }
+                        //when done log (testing)
+
+                        //get all items from db
+                        List<Item> items = getAllItems();
+
+                        // log all items
+                        for(Item item : items) {
+                            String itemInfo = "Item info: " + item.id + item.name;
+                            Log.d("Rest response", itemInfo);
+                        }
                     }
+
                 },
                 new Response.ErrorListener() {
                     @Override
@@ -110,5 +127,18 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, ProfileActivity.class));
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void addNewItem(int id, String name) {
+        ItemDatabase db = ItemDatabase.getDbInstance(this.getApplicationContext());
+        Item item = new Item();
+        item.id = id;
+        item.name = name;
+        db.itemDao().insertItem(item);
+    }
+
+    public List<Item> getAllItems() {
+        ItemDatabase db = ItemDatabase.getDbInstance(this.getApplicationContext());
+        return db.itemDao().getAllItems();
     }
 }
