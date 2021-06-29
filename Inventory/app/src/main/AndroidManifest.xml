@@ -9,16 +9,7 @@
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true">
-        <activity
-            android:name=".activity.BagMenuActivity"
-            android:theme="@style/Theme.Inventory"
-            android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity android:name=".activity.ItemDetailActivity" />
         <activity android:name=".activity.ItemOverviewActivity"></activity>
         <activity android:name=".activity.FilterInventoryActivity" />
@@ -42,6 +33,11 @@
             android:label="BAGS"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Inventory">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
         </activity>
         <activity
