@@ -11,7 +11,7 @@ import java.util.List;
 public interface BagDAO {
 
     @Query("SELECT * FROM bag")
-    List<Bag> getAll();
+    List<Bag> getAllBags();
 
     @Insert
     void InsertBag(Bag bag);
