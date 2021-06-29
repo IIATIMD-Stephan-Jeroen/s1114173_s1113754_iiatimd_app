@@ -14,7 +14,6 @@
         <activity android:name=".activity.ItemOverviewActivity"></activity>
         <activity android:name=".activity.FilterInventoryActivity" />
         <activity android:name=".activity.BagInventoryActivity" />
-        <activity android:name=".activity.AddBagActivity" />
 
         <activity
             android:name=".activity.AddBagActivity"

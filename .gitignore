@@ -1,3 +1,7 @@
 Inventory/app/build/
 Inventory/.gradle/
+<<<<<<< Updated upstream
 .idea/workspace.xml
+=======
+Inventory/local.properties
+>>>>>>> Stashed changes

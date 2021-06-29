@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -41,8 +42,6 @@ import org.json.JSONArray;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    public List<Bag> bagList;
-
     private BagAdapter bagAdapter;
     private RecyclerView bagRecyclerView;
     private FloatingActionButton addNewBagButton;
@@ -58,8 +57,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         addNewBagButton.setOnClickListener(this);
 
         initRecyclerView();
-        loadBagList();
-        fillItemDatabase();
+
+        //fill db with items
+        ItemDatabaseThread thread = new ItemDatabaseThread(this);
+        thread.start();
     }
 
 
@@ -100,66 +101,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         db.itemDao().insertItem(item);
     }
 
-    public void fillItemDatabase() {
-        RequestQueue requestQueue= Volley.newRequestQueue(this);
-
-        JsonArrayRequest objectRequest = new JsonArrayRequest(
-                Request.Method.GET,
-                "https://iiatimd-stephan-jeroen.herokuapp.com/api/items",
-                null,
-                new Response.Listener<JSONArray>() {
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        for(int i = 0; i < response.length(); i++) {
-                            try{
-                                JSONObject objectInArray = response.getJSONObject(i);
-                                int itemId = objectInArray.getInt("id");
-                                String itemName = objectInArray.getString("name");
-                                String itemCost = objectInArray.getString("cost");
-                                String itemCurrency = objectInArray.getString("currency");
-                                String itemType = objectInArray.getString("type");
-                                String itemWeight = objectInArray.getString("weight");
-
-                                JSONObject relationInfo = objectInArray.getJSONObject("relationInfo");
-                                String damage = relationInfo.getString("damage");
-                                String damage_type = relationInfo.getString("damage_type");
-                                String property_1 = relationInfo.getString("property_1");
-                                String property_2 = relationInfo.getString("property_2");
-                                String property_3 = relationInfo.getString("property_3");
-                                String property_4 = relationInfo.getString("property_4");
-
-
-                                addNewItem(itemId, itemName, itemCost, itemCurrency, itemType, itemWeight, damage, damage_type, property_1, property_2, property_3, property_4);
-                            } catch (JSONException e) {
-                                Log.e("Rest error", e.toString());
-                            }
-
-
-                        }
-                        //when done log (testing)
-
-                        //get all items from db
-                        List<Item> items = getAllItems();
-
-                        // log all items
-                        for(Item item : items) {
-                            String itemInfo = "Item info: " + item.id + " " + item.name + " " + item.cost + " " + item.currency + " " + item.type + " " + item.weight + " " + item.damage + " " + item.damage_type + " " + item.property_1 + " " + item.property_2 + " " +item.property_3 + " " + item.property_4;
-                            Log.d("Rest response", itemInfo);
-                        }
-                    }
-
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.e("Rest error", error.toString());
-                    }
-                }
-        );
-
-        requestQueue.add(objectRequest);
-    }
-
     public List<Item> getAllItems() {
         ItemDatabase db = ItemDatabase.getDbInstance(this.getApplicationContext());
         return db.itemDao().getAllItems();
@@ -185,18 +126,72 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bagRecyclerView.setAdapter(bagAdapter);
     }
 
-    private void loadBagList(){
-        Log.d("Debug", "Starting Data Acquiring");
-        AppDatabase db = AppDatabase.getInstance(this.getApplicationContext());
+    class ItemDatabaseThread extends Thread {
+        Context context;
+        ItemDatabaseThread(Context context) {
+            this.context = context;
+        }
 
-        AsyncTask.execute(new GetBagTask(db));
-        Log.d("Debug", "Async Task");
+        @Override
+        public void run() {
+            RequestQueue requestQueue= Volley.newRequestQueue(this.context);
 
-        
+            JsonArrayRequest objectRequest = new JsonArrayRequest(
+                    Request.Method.GET,
+                    "https://iiatimd-stephan-jeroen.herokuapp.com/api/items",
+                    null,
+                    new Response.Listener<JSONArray>() {
+                        @Override
+                        public void onResponse(JSONArray response) {
+                            for(int i = 0; i < response.length(); i++) {
+                                try{
+                                    JSONObject objectInArray = response.getJSONObject(i);
+                                    int itemId = objectInArray.getInt("id");
+                                    String itemName = objectInArray.getString("name");
+                                    String itemCost = objectInArray.getString("cost");
+                                    String itemCurrency = objectInArray.getString("currency");
+                                    String itemType = objectInArray.getString("type");
+                                    String itemWeight = objectInArray.getString("weight");
 
-//        List<Bag> bagList = db.bagDAO().getAllBags();
-        Log.d("Debug", "Data Acquired");
-        bagAdapter.setBagList(bagList);
+                                    JSONObject relationInfo = objectInArray.getJSONObject("relationInfo");
+                                    String damage = relationInfo.getString("damage");
+                                    String damage_type = relationInfo.getString("damage_type");
+                                    String property_1 = relationInfo.getString("property_1");
+                                    String property_2 = relationInfo.getString("property_2");
+                                    String property_3 = relationInfo.getString("property_3");
+                                    String property_4 = relationInfo.getString("property_4");
+
+
+                                    addNewItem(itemId, itemName, itemCost, itemCurrency, itemType, itemWeight, damage, damage_type, property_1, property_2, property_3, property_4);
+                                } catch (JSONException e) {
+                                    Log.e("Rest error", e.toString());
+                                }
+
+
+                            }
+                            //when done log (testing)
+
+                            //get all items from db
+                            List<Item> items = getAllItems();
+
+                            // log all items
+                            for(Item item : items) {
+                                String itemInfo = "Item info: " + item.id + " " + item.name + " " + item.cost + " " + item.currency + " " + item.type + " " + item.weight + " " + item.damage + " " + item.damage_type + " " + item.property_1 + " " + item.property_2 + " " +item.property_3 + " " + item.property_4;
+                                Log.d("Rest response", itemInfo);
+                            }
+                        }
+
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Log.e("Rest error", error.toString());
+                        }
+                    }
+            );
+
+            requestQueue.add(objectRequest);
+        }
     }
 
 }
