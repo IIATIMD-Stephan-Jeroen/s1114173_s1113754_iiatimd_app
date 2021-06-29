@@ -14,8 +14,9 @@ public abstract class ItemDatabase extends RoomDatabase {
 
     public static ItemDatabase getDbInstance(Context context) {
         if(INSTANCE == null) {
-            INSTANCE = Room.databaseBuilder(context.getApplicationContext(), ItemDatabase.class, "DB_NAME")
+            INSTANCE = Room.databaseBuilder(context.getApplicationContext(), ItemDatabase.class, "ItemDatabase")
                     .allowMainThreadQueries()
+                    .fallbackToDestructiveMigration()
                     .build();
         }
         return INSTANCE;
