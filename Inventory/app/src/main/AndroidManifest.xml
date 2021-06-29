@@ -10,35 +10,37 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true">
 
-        <activity android:name=".activity.ItemDetailActivity" />
-        <activity android:name=".activity.FilterInventoryActivity" />
-        <activity android:name=".activity.BagInventoryActivity" />
-
         <activity
-            android:name=".activity.AddBagActivity"
-            android:label="ADD BAG"
-            android:parentActivityName=".activity.MainActivity"
-            android:theme="@style/Theme.Inventory" />
-
-        <activity
-            android:name=".activity.RegisterActivity"
-            android:theme="@style/Theme.Login" />
-
-        <activity
-            android:name=".activity.ProfileActivity"
-            android:parentActivityName=".activity.MainActivity"
-            android:theme="@style/Theme.Inventory" />
-
-        <activity
-            android:name=".activity.MainActivity"
-            android:label="BAGS"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.Inventory">
+            android:name=".activity.BagMenuActivity"
+            android:theme="@style/Theme.Inventory"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity android:name=".activity.ItemDetailActivity" />
+        <activity android:name=".activity.FilterInventoryActivity" />
+        <activity android:name=".activity.BagInventoryActivity" />
+        <activity
+            android:name=".activity.AddBagActivity"
+            android:label="ADD BAG"
+            android:parentActivityName=".activity.MainActivity"
+            android:theme="@style/Theme.Inventory" />
+        <activity
+            android:name=".activity.RegisterActivity"
+            android:theme="@style/Theme.Login" />
+        <activity
+            android:name=".activity.ProfileActivity"
+            android:parentActivityName=".activity.MainActivity"
+            android:theme="@style/Theme.Inventory" />
+        <activity
+            android:name=".activity.MainActivity"
+            android:label="BAGS"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Inventory">
 
         </activity>
         <activity

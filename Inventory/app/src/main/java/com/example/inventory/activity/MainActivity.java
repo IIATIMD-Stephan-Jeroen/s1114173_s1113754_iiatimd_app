@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         loadBagList();
     }
 
+
     // code for the top bar
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -94,7 +95,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         AsyncTask.execute(new GetBagTask(db));
         Log.d("Debug", "Async Task");
 
-        List<Bag> bagList = db.bagDAO().getAllBags();
+        
+
+//        List<Bag> bagList = db.bagDAO().getAllBags();
         Log.d("Debug", "Data Acquired");
         bagAdapter.setBagList(bagList);
     }

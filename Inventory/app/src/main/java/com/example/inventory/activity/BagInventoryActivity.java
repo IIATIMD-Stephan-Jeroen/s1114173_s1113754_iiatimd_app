@@ -10,6 +10,7 @@ import com.example.inventory.R;
 public class BagInventoryActivity extends AppCompatActivity {
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
