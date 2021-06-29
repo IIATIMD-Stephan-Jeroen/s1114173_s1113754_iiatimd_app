@@ -1,5 +1,10 @@
 package com.example.inventory.activity;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContract;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.LiveData;
@@ -7,6 +12,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -45,12 +51,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private BagAdapter bagAdapter;
     private RecyclerView bagRecyclerView;
     private FloatingActionButton addNewBagButton;
+    private Context globalContext;
+
+    public boolean needToRefresh = false;
+
+    public void setNeedToRefresh(boolean needToRefresh) {
+        this.needToRefresh = needToRefresh;
+    }
 
     private RecyclerView.LayoutManager bagLayoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        globalContext = this.getApplicationContext();
+        AppDatabase db = AppDatabase.getInstance(globalContext);
+        bagAdapter = new BagAdapter(globalContext);
+        bagAdapter.setBagList(db.bagDAO().getAllBags());
+        Log.d("allBags", db.bagDAO().getAllBags().toString());
+
         setContentView(R.layout.activity_main);
 
         addNewBagButton = findViewById(R.id.addNewBagButton);
@@ -59,10 +78,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         initRecyclerView();
 
         //fill db with items
-        ItemDatabaseThread thread = new ItemDatabaseThread(this);
+        ItemDatabaseThread thread = new ItemDatabaseThread(globalContext);
         thread.start();
     }
-
 
     // code for the top bar
     @Override
@@ -106,9 +124,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return db.itemDao().getAllItems();
     }
 
+    //super ugly over-complicated code to update recycler view after add activity is closed
+    ActivityResultLauncher<Intent> startActivityWithCallback = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    AppDatabase db = AppDatabase.getInstance(globalContext);
+                    bagAdapter.setBagList(db.bagDAO().getAllBags());
+                }
+            }
+    );
     @Override
     public void onClick(View v) {
-        startActivity(new Intent(MainActivity.this, AddBagActivity.class));
+        Intent intent = new Intent(MainActivity.this, AddBagActivity.class);
+        startActivityWithCallback.launch(intent);
     }
 
     private void initRecyclerView(){
@@ -121,7 +151,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         bagRecyclerView.addItemDecoration(dividerItemDecoration);
 
-        bagAdapter = new BagAdapter(this);
 
         bagRecyclerView.setAdapter(bagAdapter);
     }

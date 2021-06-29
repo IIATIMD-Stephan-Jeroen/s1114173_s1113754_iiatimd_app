@@ -1,6 +1,7 @@
 package com.example.inventory.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,7 +46,13 @@ public class BagAdapter extends RecyclerView.Adapter<BagAdapter.BagViewHolder> {
 
     @Override
     public int getItemCount() {
-        return this.bagList.size();
+        //make sure the app does not crash when no bags are present in the database
+        try {
+            return this.bagList.size();
+        } catch(Exception e){
+            Log.e("getItemCountError",e.toString());
+            return 0;
+        }
     }
 
     public static class BagViewHolder extends RecyclerView.ViewHolder{
