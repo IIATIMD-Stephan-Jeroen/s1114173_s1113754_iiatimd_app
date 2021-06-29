@@ -14,12 +14,25 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.data.AppDatabase;
 import com.example.data.Bag;
 import com.example.data.thread.GetBagTask;
 import com.example.data.thread.InsertBagTask;
 import com.example.inventory.R;
 import com.example.inventory.adapter.BagAdapter;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import retrofit2.http.GET;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -46,7 +59,36 @@ public class MainActivity extends AppCompatActivity {
 
         // Different threads must be used to do Database operations.
 //        new Thread(new InsertBagTask(db, bags[0])).start();
+        RequestQueue requestQueue= Volley.newRequestQueue(this);
 
+        JsonArrayRequest objectRequest = new JsonArrayRequest(
+                Request.Method.GET,
+                "https://iiatimd-stephan-jeroen.herokuapp.com/api/items",
+                null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        for(int i = 0; i < response.length(); i++) {
+                            try{
+                                JSONObject objectInArray = response.getJSONObject(i);
+                                Log.d("Rest response", objectInArray.toString());
+                            } catch (JSONException e) {
+                                Log.e("Rest error", e.toString());
+                            }
+
+
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("Rest error", error.toString());
+                    }
+                }
+        );
+
+        requestQueue.add(objectRequest);
 
     }
 
