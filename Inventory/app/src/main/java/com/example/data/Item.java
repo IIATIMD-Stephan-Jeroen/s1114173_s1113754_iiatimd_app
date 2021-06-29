@@ -42,5 +42,8 @@ public class Item {
     @ColumnInfo(name = "property_4")
     public String property_4;
 
+    public String getName() {
+        return name;
+    }
 
 }
