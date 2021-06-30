@@ -203,7 +203,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             // log all items
                             for(Item item : items) {
                                 String itemInfo = "Item info: " + item.id + " " + item.name + " " + item.cost + " " + item.currency + " " + item.type + " " + item.weight + " " + item.damage + " " + item.damage_type + " " + item.property_1 + " " + item.property_2 + " " +item.property_3 + " " + item.property_4;
-                                Log.d("Rest response", itemInfo);
+//                                Log.d("Rest response", itemInfo);
                             }
                         }
 

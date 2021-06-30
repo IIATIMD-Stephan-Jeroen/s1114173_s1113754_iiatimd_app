@@ -61,4 +61,9 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
     public int getItemCount() {
         return items.size();
     }
+
+    public void filterList(List<Item> filteredList) {
+        items = filteredList;
+        notifyDataSetChanged();
+    }
 }
