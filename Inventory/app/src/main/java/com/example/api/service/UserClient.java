@@ -21,5 +21,5 @@ public interface UserClient {
     Call<User> register(@Body Register register);
 
     @GET("user")
-    Call<ResponseBody> getUser(@Header("Authorization") String authToken);
+    Call<ResponseBody> getToken();
 }

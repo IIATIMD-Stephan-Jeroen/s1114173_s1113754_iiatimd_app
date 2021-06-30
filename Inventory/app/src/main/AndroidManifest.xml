@@ -20,9 +20,11 @@
             android:label="ADD BAG"
             android:parentActivityName=".activity.MainActivity"
             android:theme="@style/Theme.Inventory" />
+
         <activity
             android:name=".activity.RegisterActivity"
             android:theme="@style/Theme.Login" />
+
         <activity
             android:name=".activity.ProfileActivity"
             android:parentActivityName=".activity.MainActivity"
@@ -37,11 +39,18 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
+
         <activity
             android:name=".activity.LoginActivity"
-            android:theme="@style/Theme.Login" />
+            android:theme="@style/Theme.Login">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
+
     </application>
 
 </manifest>
