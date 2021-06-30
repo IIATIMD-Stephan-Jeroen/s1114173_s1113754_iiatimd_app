@@ -60,7 +60,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         AppDatabase db = AppDatabase.getInstance(globalContext);
         bagAdapter = new BagAdapter(globalContext);
         bagAdapter.setBagList(db.bagDAO().getAllBags());
-        Log.d("allBags", db.bagDAO().getAllBags().toString());
 
         setContentView(R.layout.activity_main);
 
@@ -174,16 +173,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                     String itemType = objectInArray.getString("type");
                                     String itemWeight = objectInArray.getString("weight");
 
-                                    JSONObject relationInfo = objectInArray.getJSONObject("relationInfo");
-                                    String damage = relationInfo.getString("damage");
-                                    String damage_type = relationInfo.getString("damage_type");
-                                    String property_1 = relationInfo.getString("property_1");
-                                    String property_2 = relationInfo.getString("property_2");
-                                    String property_3 = relationInfo.getString("property_3");
-                                    String property_4 = relationInfo.getString("property_4");
+                                    try {
+                                        JSONObject relationInfo = objectInArray.getJSONObject("relationInfo");
+                                        String damage = relationInfo.getString("damage");
+                                        String damage_type = relationInfo.getString("damage_type");
+                                        String property_1 = relationInfo.getString("property_1");
+                                        String property_2 = relationInfo.getString("property_2");
+                                        String property_3 = relationInfo.getString("property_3");
+                                        String property_4 = relationInfo.getString("property_4");
+                                        addNewItem(itemId, itemName, itemCost, itemCurrency, itemType, itemWeight, damage, damage_type, property_1, property_2, property_3, property_4);
+
+                                    }catch (JSONException e) {
+                                        addNewItem(itemId, itemName, itemCost, itemCurrency, itemType, itemWeight, "", "","","","","");
+                                    }
 
 
-                                    addNewItem(itemId, itemName, itemCost, itemCurrency, itemType, itemWeight, damage, damage_type, property_1, property_2, property_3, property_4);
+
                                 } catch (JSONException e) {
                                     Log.e("Rest error", e.toString());
                                 }

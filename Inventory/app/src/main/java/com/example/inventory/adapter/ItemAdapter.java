@@ -24,10 +24,16 @@ import java.util.List;
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder> {
 
     private List<Item> items;
-
-    public ItemAdapter(List<Item> items) {
-        this.items = items;
+    private Context context;
+    public ItemAdapter(Context context) {
+        this.context = context;
     }
+
+    public void setItems(List<Item> itemList){
+        this.items = itemList;
+        notifyDataSetChanged();
+    }
+
 
     public static class ItemViewHolder extends RecyclerView.ViewHolder {
 

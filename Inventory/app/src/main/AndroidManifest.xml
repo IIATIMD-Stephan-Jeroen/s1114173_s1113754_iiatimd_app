@@ -11,7 +11,11 @@
         android:supportsRtl="true">
 
         <activity android:name=".activity.ItemDetailActivity" />
-        <activity android:name=".activity.ItemOverviewActivity"></activity>
+        <activity
+            android:name=".activity.ItemOverviewActivity"
+            android:label="ALL ITEMS"
+            android:parentActivityName=".activity.ProfileActivity"
+            android:theme="@style/Theme.Inventory" />
         <activity android:name=".activity.FilterInventoryActivity" />
         <activity android:name=".activity.BagInventoryActivity" />
 

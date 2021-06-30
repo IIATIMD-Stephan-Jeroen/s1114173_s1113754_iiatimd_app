@@ -24,7 +24,7 @@ public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase create(final Context context){
         return Room
                 .databaseBuilder(context, AppDatabase.class, "InventoryDB")
-//                .allowMainThreadQueries()
+                .allowMainThreadQueries()
                 .fallbackToDestructiveMigration()
                 .build();
     }
