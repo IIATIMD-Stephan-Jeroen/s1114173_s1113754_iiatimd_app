@@ -6,10 +6,10 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-@Database(entities = {Bag.class}, version = 9)
+@Database(entities = {Bag.class, Item.class}, version = 10)
 public abstract class AppDatabase extends RoomDatabase {
 
-
+    public abstract ItemDAO itemDAO();
     public abstract BagDAO bagDAO();
 
     private static AppDatabase instance;
@@ -24,7 +24,7 @@ public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase create(final Context context){
         return Room
                 .databaseBuilder(context, AppDatabase.class, "InventoryDB")
-                .allowMainThreadQueries()
+//                .allowMainThreadQueries()
                 .fallbackToDestructiveMigration()
                 .build();
     }
