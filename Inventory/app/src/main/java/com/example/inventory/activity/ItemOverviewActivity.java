@@ -6,12 +6,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
+import com.example.data.AppDatabase;
 import com.example.data.Item;
-import com.example.data.ItemDatabase;
 import com.example.inventory.R;
 import com.example.inventory.adapter.ItemAdapter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ItemOverviewActivity extends AppCompatActivity {
@@ -33,7 +32,7 @@ public class ItemOverviewActivity extends AppCompatActivity {
     }
 
     public List<Item> getAllItems() {
-        ItemDatabase db = ItemDatabase.getDbInstance(this.getApplicationContext());
-        return db.itemDao().getAllItems();
+        AppDatabase db = AppDatabase.getInstance(this.getApplicationContext());
+        return db.itemDAO().getAllItems();
     }
 }
