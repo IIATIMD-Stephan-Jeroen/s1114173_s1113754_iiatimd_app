@@ -50,13 +50,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         mailInput = findViewById(R.id.emailInput);
         passwordInput = findViewById(R.id.passwordInput);
 
-//        loginButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                login();
-//            }
-//        });
-
         loginButton.setOnClickListener(this);
         forgotPasswordButton.setOnClickListener(this);
         signUpButton.setOnClickListener(this);
@@ -71,7 +64,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 if (response.isSuccessful()){
-                    Toast.makeText(LoginActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
                 }
                 else{
