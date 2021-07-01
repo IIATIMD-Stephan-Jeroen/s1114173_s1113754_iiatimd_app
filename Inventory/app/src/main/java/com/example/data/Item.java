@@ -46,4 +46,8 @@ public class Item {
         return name;
     }
 
+    public int getId() {
+        return id;
+    }
+
 }

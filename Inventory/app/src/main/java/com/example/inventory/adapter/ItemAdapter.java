@@ -2,6 +2,7 @@ package com.example.inventory.adapter;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +26,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
 
     private List<Item> items;
     private Context context;
+
     public ItemAdapter(Context context) {
         this.context = context;
     }
@@ -34,13 +36,25 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         notifyDataSetChanged();
     }
 
-
-    public static class ItemViewHolder extends RecyclerView.ViewHolder {
+    public static class ItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public TextView itemName;
+        public TextView itemId;
+        public Item item;
         public ItemViewHolder(View v){
             super(v);
+            v.setOnClickListener((View.OnClickListener) this);
             itemName = v.findViewById(R.id.itemName);
+            itemId = v.findViewById(R.id.itemId);
+        }
+
+        public void setItem(Item item) {
+            this.item = item;
+        }
+
+        @Override
+        public void onClick( View v) {
+            Log.d("test", String.valueOf(itemId.getText()));
         }
     }
 
@@ -52,9 +66,12 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         return new ItemAdapter.ItemViewHolder(v);
     }
 
+
     @Override
     public void onBindViewHolder(@NonNull @NotNull ItemAdapter.ItemViewHolder holder, int position) {
         holder.itemName.setText(items.get(position).getName());
+        holder.itemId.setText(String.valueOf(items.get(position).getId()));
+
     }
 
     @Override
