@@ -21,11 +21,11 @@
 
         <TextView
             android:id="@+id/itemName"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="267dp"
+            android:layout_height="69dp"
+            android:fontFamily="@font/sansation"
             android:gravity="center_vertical"
             android:text="TextView"
-            android:fontFamily="@font/sansation"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
