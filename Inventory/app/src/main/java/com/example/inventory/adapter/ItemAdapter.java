@@ -1,6 +1,8 @@
 package com.example.inventory.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,6 +19,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.data.Bag;
 import com.example.data.Item;
 import com.example.inventory.R;
+import com.example.inventory.activity.AddBagActivity;
+import com.example.inventory.activity.ItemDetailActivity;
+import com.example.inventory.activity.ItemOverviewActivity;
+import com.example.inventory.activity.MainActivity;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -25,10 +31,10 @@ import java.util.List;
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder> {
 
     private List<Item> items;
-    private Context context;
+    public Context mContext;
 
     public ItemAdapter(Context context) {
-        this.context = context;
+        this.mContext = context;
     }
 
     public void setItems(List<Item> itemList){
@@ -41,11 +47,14 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         public TextView itemName;
         public TextView itemId;
         public Item item;
+        public Context mContext;
+
         public ItemViewHolder(View v){
             super(v);
             v.setOnClickListener((View.OnClickListener) this);
             itemName = v.findViewById(R.id.itemName);
             itemId = v.findViewById(R.id.itemId);
+            mContext = v.getContext();
         }
 
         public void setItem(Item item) {
@@ -54,7 +63,10 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
 
         @Override
         public void onClick( View v) {
-            Log.d("test", String.valueOf(itemId.getText()));
+            Intent intent = new Intent(mContext, ItemDetailActivity.class);
+            Log.d("test", (String) itemId.getText());
+            intent.putExtra("itemId", itemId.getText());
+            mContext.startActivity(intent);
         }
     }
 

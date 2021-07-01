@@ -1,3 +1,7 @@
 <resources>
     <string name="app_title">APP OF HOLDING</string>
+    <string name="item_detail_name">NAME</string>
+    <string name="item_detail_cost">COST</string>
+    <string name="item_detail_weight">WEIGHT</string>
+    <string name="item_detail_additional_properties">ADDITIONAL PROPERTIES</string>
 </resources>

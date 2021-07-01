@@ -10,7 +10,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true">
 
-        <activity android:name=".activity.ItemDetailActivity" />
+        <activity
+            android:name=".activity.ItemDetailActivity"
+            android:theme="@style/Theme.Inventory"
+        />
         <activity
             android:name=".activity.ItemOverviewActivity"
             android:label="ALL ITEMS"
