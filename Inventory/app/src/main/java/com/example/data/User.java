@@ -10,8 +10,21 @@ public class User {
     @ColumnInfo
     private String name;
 
+    @ColumnInfo
+    private String firstFavItem;
+
+    @ColumnInfo
+    private String secondFavItem;
+
     @PrimaryKey
     private int id;
+
+    public User(String name, String firstFavItem, String secondFavItem, int id){
+        this.name = name;
+        this.firstFavItem = firstFavItem;
+        this.secondFavItem = secondFavItem;
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -27,5 +40,21 @@ public class User {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getFirstFavItem() {
+        return firstFavItem;
+    }
+
+    public void setFirstFavItem(String firstFavItem) {
+        this.firstFavItem = firstFavItem;
+    }
+
+    public String getSecondFavItem() {
+        return secondFavItem;
+    }
+
+    public void setSecondFavItem(String secondFavItem) {
+        this.secondFavItem = secondFavItem;
     }
 }
