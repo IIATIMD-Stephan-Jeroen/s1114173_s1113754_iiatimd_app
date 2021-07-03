@@ -101,6 +101,10 @@ public class ItemOverviewActivity extends AppCompatActivity {
         itemRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         itemRecyclerView.hasFixedSize();
 
+//        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
+//        itemRecyclerView.addItemDecoration(dividerItemDecoration);
+
+
         itemRecyclerView.setAdapter(itemAdapter);
     }
 
