@@ -35,19 +35,6 @@
         app:layout_constraintTop_toBottomOf="@+id/textView9"
         app:layout_constraintVertical_bias="0.057" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/addItemToInventoryButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.956"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.958"
-        app:srcCompat="@drawable/ic_add" />
-
 
     <TextView
         android:id="@+id/itemDetailName"
@@ -146,4 +133,55 @@
         app:layout_constraintHorizontal_bias="0.25"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/itemDetailHeaderDamage" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/plusItemToInventory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="70dp"
+        android:layout_marginLeft="120dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/itemDetailProps"
+        app:layout_constraintVertical_bias="0.475"
+        app:srcCompat="@drawable/ic_add" />
+
+    <EditText
+        android:id="@+id/inputItemToInventory"
+        android:layout_width="74dp"
+        android:layout_height="53dp"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/saveItemToInventory"
+        app:layout_constraintEnd_toStartOf="@+id/minusItemToInventory"
+        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintStart_toEndOf="@+id/plusItemToInventory"
+        app:layout_constraintTop_toBottomOf="@+id/itemDetailProps"
+        app:layout_constraintVertical_bias="0.798" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/minusItemToInventory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="70dp"
+        android:layout_marginRight="104dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/itemDetailProps"
+        app:layout_constraintVertical_bias="0.475"
+        app:srcCompat="@android:drawable/bottom_bar" />
+
+    <Button
+        android:id="@+id/saveItemToInventory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="36dp"
+        android:text="SAVE"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
