@@ -27,6 +27,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.data.AppDatabase;
+import com.example.data.Bag;
 import com.example.data.Item;
 import com.example.inventory.R;
 import com.example.inventory.adapter.BagAdapter;
@@ -38,12 +39,16 @@ import org.json.JSONObject;
 import org.json.JSONException;
 import org.json.JSONArray;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, BagAdapter.OnBagListener{
+
+    private static final String TAG = "MainActivity";
 
     private BagAdapter bagAdapter;
     private RecyclerView bagRecyclerView;
     private FloatingActionButton addNewBagButton;
     private Context globalContext;
+
+    AppDatabase db;
 
     public boolean needToRefresh = false;
 
@@ -57,9 +62,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         globalContext = this.getApplicationContext();
-        AppDatabase db = AppDatabase.getInstance(globalContext);
-        bagAdapter = new BagAdapter(globalContext);
-        bagAdapter.setBagList(db.bagDAO().getAllBags());
+        db = AppDatabase.getInstance(globalContext);
+        bagAdapter = new BagAdapter(globalContext, this);
+//        bagAdapter.setBagList(db.bagDAO().getAllBags());
+        List<Bag> bagList = db.bagDAO().getAllBags();
+        bagAdapter.setBagList(bagList);
 
         setContentView(R.layout.activity_main);
 
@@ -144,6 +151,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         bagRecyclerView.setAdapter(bagAdapter);
+    }
+
+    // Stuff happening when you click on a bag item
+    @Override
+    public void onBagClick(int position) {
+        Log.d(TAG, "onBagClick:  clicked");
+
+        Intent intent = new Intent(this, BagInventoryActivity.class);
+        // send bag name to new activity
+        intent.putExtra("bag_name", db.bagDAO().getAllBags().get(position).getName());
+        startActivity(intent);
     }
 
     class ItemDatabaseThread extends Thread {

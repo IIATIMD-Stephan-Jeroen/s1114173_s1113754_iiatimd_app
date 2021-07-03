@@ -20,7 +20,12 @@
             android:parentActivityName=".activity.ProfileActivity"
             android:theme="@style/Theme.Inventory" />
         <activity android:name=".activity.FilterInventoryActivity" />
-        <activity android:name=".activity.BagInventoryActivity" />
+
+        <activity
+            android:name=".activity.BagInventoryActivity"
+            android:label="INVENTORY"
+            android:parentActivityName=".activity.MainActivity"
+            android:theme="@style/Theme.Inventory" />
 
         <activity
             android:name=".activity.AddBagActivity"

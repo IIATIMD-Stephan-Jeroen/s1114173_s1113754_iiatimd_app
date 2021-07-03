@@ -12,13 +12,14 @@
     android:layout_marginBottom="20dp" >
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bagCard"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/primary">
 
         <TextView
             android:id="@+id/bagName"
-            android:layout_width="43dp"
+            android:layout_width="wrap_content"
             android:layout_height="17dp"
             android:fontFamily="@font/sansation"
             android:gravity="center_horizontal"
@@ -51,9 +52,9 @@
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/sansation"
             android:text="Bag of"
             android:textColor="@color/white"
-            android:fontFamily="@font/sansation"
             app:layout_constraintBottom_toTopOf="@+id/bagDescription"
             app:layout_constraintEnd_toStartOf="@+id/bagName"
             app:layout_constraintHorizontal_bias="0.666"
