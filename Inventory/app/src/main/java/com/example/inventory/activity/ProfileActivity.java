@@ -24,6 +24,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ProfileActivity extends AppCompatActivity {
 
+    private static String token;
+
     private static final String TAG = "ProfileActivity";
 
     Retrofit.Builder builder = new Retrofit.Builder()
@@ -53,21 +55,31 @@ public class ProfileActivity extends AppCompatActivity {
 
     private void setUserText(){
 
-        Call<ResponseBody> call = userClient.getToken();
+        Call<ResponseBody> call = userClient.getSecret("Authorization");
         Log.d(TAG, "setUserText: " + call.toString());
 
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                profileToken.setText(call.toString());
+                if(response.isSuccessful()){
+                    Log.d(TAG, "onResponse: " + response.toString());
+                }
+                else {
+                    Log.d(TAG, "onResponse: Fail" + response.toString());
+                }
             }
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Log.d(TAG, "onFailure: Fail");
                 Toast.makeText(ProfileActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
             }
         });
 
+    }
+
+    private void getStuff(){
+        userClient.getSecret(token);
     }
 
 

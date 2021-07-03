@@ -55,6 +55,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         signUpButton.setOnClickListener(this);
     }
 
+    private static String token;
+
     private void login(){
 
         Login login = new Login(mailInput.getText().toString(), passwordInput.getText().toString());

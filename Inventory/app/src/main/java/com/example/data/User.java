@@ -11,6 +11,9 @@ public class User {
     private String name;
 
     @ColumnInfo
+    private String cookie;
+
+    @ColumnInfo
     private String firstFavItem;
 
     @ColumnInfo
@@ -19,8 +22,9 @@ public class User {
     @PrimaryKey
     private int id;
 
-    public User(String name, String firstFavItem, String secondFavItem, int id){
+    public User(String name, String cookie, String firstFavItem, String secondFavItem, int id){
         this.name = name;
+        this.cookie = cookie;
         this.firstFavItem = firstFavItem;
         this.secondFavItem = secondFavItem;
         this.id = id;
@@ -56,5 +60,13 @@ public class User {
 
     public void setSecondFavItem(String secondFavItem) {
         this.secondFavItem = secondFavItem;
+    }
+
+    public String getCookie() {
+        return cookie;
+    }
+
+    public void setCookie(String cookie) {
+        this.cookie = cookie;
     }
 }
