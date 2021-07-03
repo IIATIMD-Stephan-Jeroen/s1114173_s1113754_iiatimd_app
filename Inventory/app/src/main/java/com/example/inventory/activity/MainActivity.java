@@ -93,7 +93,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Toast.makeText(globalContext, "Bag Deleted", Toast.LENGTH_SHORT).show();
             }
         }).attachToRecyclerView(bagRecyclerView);
-
     }
 
     // code for the top bar
@@ -162,8 +161,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bagRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         bagRecyclerView.hasFixedSize();
 
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
-        bagRecyclerView.addItemDecoration(dividerItemDecoration);
+//        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
+//        bagRecyclerView.addItemDecoration(dividerItemDecoration);
 
 
         bagRecyclerView.setAdapter(bagAdapter);
