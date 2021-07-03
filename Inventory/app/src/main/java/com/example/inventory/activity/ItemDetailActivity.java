@@ -42,7 +42,7 @@ public class ItemDetailActivity extends AppCompatActivity implements View.OnClic
     Item item;
     int itemId;
     int bagId;
-
+    private Bagitem bagitem;
     private AppDatabase db;
 
     int itemAmount = 0;
@@ -57,10 +57,16 @@ public class ItemDetailActivity extends AppCompatActivity implements View.OnClic
         bagId = Integer.valueOf(intent.getStringExtra("bag_id"));
 
         itemAdapter = new ItemAdapter(this.getApplicationContext(), String.valueOf(bagId));
+
+        try{
+            bagitem = db.bagitemDAO().getBagItemById(itemId,bagId);
+            itemAmount = bagitem.getAmount();
+        }catch(Exception e){
+            //
+        }
+
         initButtons();
 
-
-        Log.e("test",String.valueOf(bagId));
 
         item = db.itemDAO().getItemById(itemId);
         setItemText(item);
@@ -81,12 +87,12 @@ public class ItemDetailActivity extends AppCompatActivity implements View.OnClic
         saveButton = findViewById(R.id.saveItemToInventory);
         itemAmountInput = findViewById(R.id.inputItemToInventory);
 
+
         itemAmountInput.setText(String.valueOf(itemAmount));
 
         buttonPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("test","BUTTON PLUS");
                 itemAmount += 1;
                 itemAmountInput.setText(String.valueOf(itemAmount));
             }
@@ -95,7 +101,6 @@ public class ItemDetailActivity extends AppCompatActivity implements View.OnClic
         buttonMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("test", "BUTTON MINUS");
                 if(itemAmount <= 0){
                     itemAmount = 0;
                     itemAmountInput.setText(String.valueOf(itemAmount));
@@ -110,9 +115,14 @@ public class ItemDetailActivity extends AppCompatActivity implements View.OnClic
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("test","SAVE BUTTON : " + String.valueOf(itemAmount));
-                Bagitem bagitem = new Bagitem(itemId, itemAmount, bagId);
-                db.bagitemDAO().insertBagItem(bagitem);
+                if(itemAmount == 0) {
+                    try{
+                        db.bagitemDAO().delete(bagitem);
+                    }catch (Exception e) {}
+                } else {
+                    Bagitem nBagitem = new Bagitem(itemId, itemAmount, bagId);
+                    db.bagitemDAO().insertBagItem(nBagitem);
+                }
                 finish();
             }
         });

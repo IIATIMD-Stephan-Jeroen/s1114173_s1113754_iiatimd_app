@@ -45,14 +45,15 @@ public class BagInventoryActivity extends AppCompatActivity implements View.OnCl
         onCreateCalled = true;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bag_inventory);
-
-        inventoryHolder = findViewById(R.id.inventoryHolder);
-        addItemToBagButton = findViewById(R.id.addItemToBagButton);
-        this.bagitemAdapter = new BagitemAdapter(this.getApplicationContext());
-
         Intent intent = getIntent();
         this.bagName = intent.getStringExtra("bag_name");
         this.bagId = intent.getStringExtra("bag_id");
+
+        inventoryHolder = findViewById(R.id.inventoryHolder);
+        addItemToBagButton = findViewById(R.id.addItemToBagButton);
+        this.bagitemAdapter = new BagitemAdapter(this.getApplicationContext(), Integer.valueOf(bagId));
+
+
 
         items = getAllItems();
         bagitemAdapter.setItems(items);

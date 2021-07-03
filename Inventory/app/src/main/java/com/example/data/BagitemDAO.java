@@ -1,7 +1,9 @@
 package com.example.data;
 
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
 import java.util.List;
@@ -15,9 +17,9 @@ public interface BagitemDAO {
     @Query("SELECT * FROM bagitem WHERE itemId = :id AND belongsToBagId = :bagId")
     Bagitem getBagItemById(int id, int bagId);
 
-    @Query("UPDATE bagitem SET amount = :amount WHERE itemId = :id AND belongsToBagId = :bagId")
-    void updateBagItemAmount(int amount, int id, int bagId);
+    @Delete
+    void delete(Bagitem bagitem);
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertBagItem(Bagitem bagitem);
 }

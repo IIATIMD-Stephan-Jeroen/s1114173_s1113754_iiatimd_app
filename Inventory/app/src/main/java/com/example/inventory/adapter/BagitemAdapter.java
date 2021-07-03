@@ -1,6 +1,7 @@
 package com.example.inventory.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import com.example.data.AppDatabase;
 import com.example.data.Bagitem;
 import com.example.data.Item;
 import com.example.inventory.R;
+import com.example.inventory.activity.ItemDetailActivity;
 
 import org.jetbrains.annotations.NotNull;
 import org.w3c.dom.Text;
@@ -22,6 +24,7 @@ import java.util.List;
 public class BagitemAdapter extends RecyclerView.Adapter<BagitemAdapter.BagitemViewHolder> {
 
     private List<Bagitem> items;
+    private int bagId;
     public Context mContext;
 
     public void setItems(List<Bagitem> itemList){
@@ -29,8 +32,9 @@ public class BagitemAdapter extends RecyclerView.Adapter<BagitemAdapter.BagitemV
         notifyDataSetChanged();
     }
 
-    public BagitemAdapter(Context context) {
+    public BagitemAdapter(Context context, int bagId) {
         this.mContext = context;
+        this.bagId = bagId;
     }
 
     public class BagitemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -50,7 +54,10 @@ public class BagitemAdapter extends RecyclerView.Adapter<BagitemAdapter.BagitemV
 
         @Override
         public void onClick(View view) {
-
+            Intent intent = new Intent(mContext, ItemDetailActivity.class);
+            intent.putExtra("itemId", itemId.getText());
+            intent.putExtra("bag_id", String.valueOf(bagId));
+            mContext.startActivity(intent);
         }
     }
 

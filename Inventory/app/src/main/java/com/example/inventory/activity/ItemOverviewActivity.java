@@ -48,7 +48,7 @@ public class ItemOverviewActivity extends AppCompatActivity {
         Intent intent = getIntent();
         bagId = Integer.valueOf(intent.getStringExtra("bag_id"));
         this.itemAdapter = new ItemAdapter(mContext, String.valueOf(bagId));
-        this.bagitemAdapter = new BagitemAdapter(mContext);
+        this.bagitemAdapter = new BagitemAdapter(mContext, bagId);
 
         items = getAllItems();
         itemAdapter.setItems(items);
@@ -71,7 +71,7 @@ public class ItemOverviewActivity extends AppCompatActivity {
 
             }
         });
-        
+
     }
 
     private void filter(String text) {
@@ -87,7 +87,11 @@ public class ItemOverviewActivity extends AppCompatActivity {
             itemAdapter.filterList(filteredList);
         }
     }
-
+    @Override
+    public void onResume() {
+        super.onResume();
+        itemAdapter.setItems(getAllItems());
+    }
 
 
 

@@ -55,6 +55,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         public TextView itemBagId;
         public Item item;
         public Context mContext;
+        public TextView itemAmount;
 
         public ItemViewHolder(View v){
             super(v);
@@ -62,6 +63,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
             itemName = v.findViewById(R.id.itemName);
             itemId = v.findViewById(R.id.itemId);
             itemBagId = v.findViewById(R.id.itemBagId);
+            itemAmount = v.findViewById(R.id.itemAmount);
             mContext = v.getContext();
         }
 
@@ -92,6 +94,12 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         holder.itemName.setText(items.get(position).getName());
         holder.itemId.setText(String.valueOf(items.get(position).getId()));
         holder.itemBagId.setText(bagId);
+        AppDatabase db = AppDatabase.getInstance(mContext);
+        try{
+            holder.itemAmount.setText(String.valueOf(db.bagitemDAO().getBagItemById(items.get(position).getId(), Integer.valueOf(bagId)).getAmount()));
+        } catch(Exception e){
+            //
+        }
 
     }
 
