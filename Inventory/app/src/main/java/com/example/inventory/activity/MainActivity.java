@@ -176,6 +176,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent intent = new Intent(this, BagInventoryActivity.class);
         // send bag name to new activity
         intent.putExtra("bag_name", db.bagDAO().getAllBags().get(position).getName());
+        intent.putExtra("bag_id", String.valueOf(db.bagDAO().getAllBags().get(position).getId()));
         startActivity(intent);
     }
 

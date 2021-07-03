@@ -13,7 +13,6 @@
         <activity
             android:name=".activity.ItemDetailActivity"
             android:label="ITEM DETAIL"
-            android:parentActivityName=".activity.ItemOverviewActivity"
             android:theme="@style/Theme.Inventory"
         />
         <activity
