@@ -46,4 +46,43 @@ public class Item {
         return name;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    public String getCost() {
+        return cost;
+    }
+
+    public String getWeight() {
+        return weight;
+    }
+
+    public String getDamage() {
+        return damage;
+    }
+
+    public String getDamage_type() {
+        return damage_type;
+    }
+
+    public String getProperty_1() {
+        return property_1;
+    }
+
+    public String getProperty_2() {
+        return property_2;
+    }
+
+    public String getProperty_3() {
+        return property_3;
+    }
+
+    public String getProperty_4() {
+        return property_4;
+    }
 }

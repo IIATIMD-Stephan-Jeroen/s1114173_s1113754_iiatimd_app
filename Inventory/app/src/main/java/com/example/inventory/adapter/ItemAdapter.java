@@ -1,6 +1,8 @@
 package com.example.inventory.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +18,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.data.Bag;
 import com.example.data.Item;
 import com.example.inventory.R;
+import com.example.inventory.activity.AddBagActivity;
+import com.example.inventory.activity.ItemDetailActivity;
+import com.example.inventory.activity.ItemOverviewActivity;
+import com.example.inventory.activity.MainActivity;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -24,9 +30,10 @@ import java.util.List;
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder> {
 
     private List<Item> items;
-    private Context context;
+    public Context mContext;
+
     public ItemAdapter(Context context) {
-        this.context = context;
+        this.mContext = context;
     }
 
     public void setItems(List<Item> itemList){
@@ -34,13 +41,30 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         notifyDataSetChanged();
     }
 
-
-    public static class ItemViewHolder extends RecyclerView.ViewHolder {
+    public static class ItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public TextView itemName;
+        public TextView itemId;
+        public Item item;
+        public Context mContext;
+
         public ItemViewHolder(View v){
             super(v);
+            v.setOnClickListener((View.OnClickListener) this);
             itemName = v.findViewById(R.id.itemName);
+            itemId = v.findViewById(R.id.itemId);
+            mContext = v.getContext();
+        }
+
+        public void setItem(Item item) {
+            this.item = item;
+        }
+
+        @Override
+        public void onClick( View v) {
+            Intent intent = new Intent(mContext, ItemDetailActivity.class);
+            intent.putExtra("itemId", itemId.getText());
+            mContext.startActivity(intent);
         }
     }
 
@@ -52,9 +76,12 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         return new ItemAdapter.ItemViewHolder(v);
     }
 
+
     @Override
     public void onBindViewHolder(@NonNull @NotNull ItemAdapter.ItemViewHolder holder, int position) {
         holder.itemName.setText(items.get(position).getName());
+        holder.itemId.setText(String.valueOf(items.get(position).getId()));
+
     }
 
     @Override

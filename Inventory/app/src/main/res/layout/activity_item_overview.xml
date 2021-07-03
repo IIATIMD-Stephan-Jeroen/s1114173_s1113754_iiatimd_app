@@ -18,7 +18,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/itemRecyclerView"
                 android:layout_width="411dp"
-                android:layout_height="620dp" />
+                android:layout_height="589dp" />
 
             <EditText
                 android:id="@+id/editTextItemName"

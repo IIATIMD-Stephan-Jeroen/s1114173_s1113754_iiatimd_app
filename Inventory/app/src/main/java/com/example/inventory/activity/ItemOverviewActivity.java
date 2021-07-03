@@ -46,7 +46,6 @@ public class ItemOverviewActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                Log.d("filter",s.toString());
                 filter(s.toString());
 
             }
@@ -68,7 +67,6 @@ public class ItemOverviewActivity extends AppCompatActivity {
     }
 
     private void initRecyclerView(){
-        Log.d("Debug", "Initiated Recyclerview");
 
         itemRecyclerView = findViewById(R.id.itemRecyclerView);
         itemRecyclerView.setLayoutManager(new LinearLayoutManager(this));

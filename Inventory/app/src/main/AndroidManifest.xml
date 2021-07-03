@@ -10,11 +10,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true">
 
-        <activity android:name=".activity.ItemDetailActivity" />
+        <activity
+            android:name=".activity.ItemDetailActivity"
+            android:label="ITEM DETAIL"
+            android:parentActivityName=".activity.ItemOverviewActivity"
+            android:theme="@style/Theme.Inventory"
+        />
         <activity
             android:name=".activity.ItemOverviewActivity"
             android:label="ALL ITEMS"
-            android:parentActivityName=".activity.ProfileActivity"
+            android:parentActivityName=".activity.BagInventoryActivity"
             android:theme="@style/Theme.Inventory" />
         <activity android:name=".activity.FilterInventoryActivity" />
 
