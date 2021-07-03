@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Parcelable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,7 +63,6 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         @Override
         public void onClick( View v) {
             Intent intent = new Intent(mContext, ItemDetailActivity.class);
-            Log.d("test", (String) itemId.getText());
             intent.putExtra("itemId", itemId.getText());
             mContext.startActivity(intent);
         }
