@@ -1,5 +1,6 @@
 package com.example.inventory.activity;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
@@ -15,6 +16,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.widget.Adapter;
 import android.widget.EditText;
 
 import com.example.data.AppDatabase;
@@ -69,19 +71,8 @@ public class ItemOverviewActivity extends AppCompatActivity {
 
             }
         });
+        
     }
-
-    ActivityResultLauncher<Intent> startActivityWithCallback = registerForActivityResult(
-            new ActivityResultContracts.StartActivityForResult(),
-            new ActivityResultCallback<ActivityResult>() {
-                @Override
-                public void onActivityResult(ActivityResult result) {
-                    AppDatabase db = AppDatabase.getInstance(mContext);
-                    //bagAdapter.setBagList(db.bagDAO().getAllBags());
-                    bagitemAdapter.setItems(db.bagitemDAO().getAllBagItems(bagId));
-                }
-            }
-    );
 
     private void filter(String text) {
         List<Item> filteredList = new ArrayList<>();
@@ -96,6 +87,9 @@ public class ItemOverviewActivity extends AppCompatActivity {
             itemAdapter.filterList(filteredList);
         }
     }
+
+
+
 
     private void initRecyclerView(){
 

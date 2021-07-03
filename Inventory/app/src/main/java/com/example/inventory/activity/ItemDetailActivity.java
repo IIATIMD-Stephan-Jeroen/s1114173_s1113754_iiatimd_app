@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.data.AppDatabase;
+import com.example.data.Bagitem;
 import com.example.data.Item;
 import com.example.inventory.R;
 import com.example.inventory.adapter.ItemAdapter;
@@ -42,13 +43,15 @@ public class ItemDetailActivity extends AppCompatActivity implements View.OnClic
     int itemId;
     int bagId;
 
+    private AppDatabase db;
+
     int itemAmount = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_detail);
-        AppDatabase db = AppDatabase.getInstance(this.getApplicationContext());
+        db = AppDatabase.getInstance(this.getApplicationContext());
         Intent intent = getIntent();
         itemId = Integer.valueOf(intent.getStringExtra("itemId"));
         bagId = Integer.valueOf(intent.getStringExtra("bag_id"));
@@ -108,7 +111,9 @@ public class ItemDetailActivity extends AppCompatActivity implements View.OnClic
             @Override
             public void onClick(View view) {
                 Log.d("test","SAVE BUTTON : " + String.valueOf(itemAmount));
-
+                Bagitem bagitem = new Bagitem(itemId, itemAmount, bagId);
+                db.bagitemDAO().insertBagItem(bagitem);
+                finish();
             }
         });
 

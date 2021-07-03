@@ -25,6 +25,8 @@ import com.example.inventory.R;
 import com.example.inventory.adapter.BagitemAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 public class BagInventoryActivity extends AppCompatActivity implements View.OnClickListener {
@@ -36,9 +38,11 @@ public class BagInventoryActivity extends AppCompatActivity implements View.OnCl
     private String bagId;
     private String bagName;
     private List<Bagitem> items;
+    private Boolean onCreateCalled = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        onCreateCalled = true;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bag_inventory);
 
@@ -55,8 +59,6 @@ public class BagInventoryActivity extends AppCompatActivity implements View.OnCl
         initRecyclerView();
 
 
-
-        Log.e("test","BagInventoryActivity : " + bagId);
         inventoryHolder.setText(bagName);
         addItemToBagButton.setOnClickListener(this);
     }
@@ -66,6 +68,12 @@ public class BagInventoryActivity extends AppCompatActivity implements View.OnCl
         Intent intent = new Intent(this, ItemOverviewActivity.class);
         intent.putExtra("bag_id", bagId);
         startActivity(intent);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        bagitemAdapter.setItems(getAllItems());
     }
 
 

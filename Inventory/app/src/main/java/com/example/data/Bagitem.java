@@ -19,6 +19,12 @@ public class Bagitem {
     @ColumnInfo
     private int belongsToBagId;
 
+    public Bagitem(int itemId, int amount, int belongsToBagId){
+        this.itemId = itemId;
+        this.amount = amount;
+        this.belongsToBagId = belongsToBagId;
+    }
+
     public int getBelongsToBagId() {
         return belongsToBagId;
     }

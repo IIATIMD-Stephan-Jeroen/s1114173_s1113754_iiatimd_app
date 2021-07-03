@@ -67,8 +67,8 @@ public class BagitemAdapter extends RecyclerView.Adapter<BagitemAdapter.BagitemV
         AppDatabase db = AppDatabase.getInstance(mContext);
         Item dbItem = db.itemDAO().getItemById(items.get(position).getItemId());
         holder.itemName.setText(dbItem.getName());
-        holder.itemId.setText(dbItem.getId());
-        holder.itemAmount.setText(items.get(position).getAmount());
+        holder.itemId.setText(String.valueOf(dbItem.getId()));
+        holder.itemAmount.setText(String.valueOf(items.get(position).getAmount()));
     }
 
     @Override
