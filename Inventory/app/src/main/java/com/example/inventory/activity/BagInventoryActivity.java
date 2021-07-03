@@ -3,9 +3,11 @@ package com.example.inventory.activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,6 +27,7 @@ import com.example.inventory.R;
 import com.example.inventory.adapter.BagitemAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import org.jetbrains.annotations.NotNull;
 import org.w3c.dom.Text;
 
 import java.util.List;
@@ -39,6 +42,7 @@ public class BagInventoryActivity extends AppCompatActivity implements View.OnCl
     private String bagName;
     private List<Bagitem> items;
     private Boolean onCreateCalled = false;
+    private Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,12 +57,25 @@ public class BagInventoryActivity extends AppCompatActivity implements View.OnCl
         addItemToBagButton = findViewById(R.id.addItemToBagButton);
         this.bagitemAdapter = new BagitemAdapter(this.getApplicationContext(), Integer.valueOf(bagId));
 
+        mContext = this.getApplicationContext();
 
 
         items = getAllItems();
         bagitemAdapter.setItems(items);
         initRecyclerView();
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+            @Override
+            public boolean onMove(@NonNull @NotNull RecyclerView recyclerView, @NonNull @NotNull RecyclerView.ViewHolder viewHolder, @NonNull @NotNull RecyclerView.ViewHolder target) {
+                return false;
+            }
 
+            @Override
+            public void onSwiped(@NonNull @NotNull RecyclerView.ViewHolder viewHolder, int direction) {
+                AppDatabase db = AppDatabase.getInstance(mContext);
+                db.bagitemDAO().delete(bagitemAdapter.GetBagItemAt(viewHolder.getAdapterPosition()));
+                Toast.makeText(mContext, "Item Deleted", Toast.LENGTH_SHORT).show();
+            }
+        }).attachToRecyclerView(bagItemRecyclerView);
 
         inventoryHolder.setText(bagName);
         addItemToBagButton.setOnClickListener(this);
@@ -83,9 +100,7 @@ public class BagInventoryActivity extends AppCompatActivity implements View.OnCl
         bagItemRecyclerView = findViewById(R.id.bagItemRecyclerView);
         bagItemRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         bagItemRecyclerView.hasFixedSize();
-
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
-        bagItemRecyclerView.addItemDecoration(dividerItemDecoration);
+        
 
 
         bagItemRecyclerView.setAdapter(bagitemAdapter);

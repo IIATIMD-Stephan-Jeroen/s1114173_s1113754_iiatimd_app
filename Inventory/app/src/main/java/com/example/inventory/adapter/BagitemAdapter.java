@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.data.AppDatabase;
+import com.example.data.Bag;
 import com.example.data.Bagitem;
 import com.example.data.Item;
 import com.example.inventory.R;
@@ -59,6 +60,10 @@ public class BagitemAdapter extends RecyclerView.Adapter<BagitemAdapter.BagitemV
             intent.putExtra("bag_id", String.valueOf(bagId));
             mContext.startActivity(intent);
         }
+    }
+
+    public Bagitem GetBagItemAt(int position){
+        return items.get(position);
     }
 
     @NonNull
