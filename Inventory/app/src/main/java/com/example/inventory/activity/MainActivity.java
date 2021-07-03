@@ -7,6 +7,7 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -35,6 +36,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 import org.json.JSONException;
 import org.json.JSONArray;
@@ -78,6 +80,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //fill db with items
         ItemDatabaseThread thread = new ItemDatabaseThread(globalContext);
         thread.start();
+
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+            @Override
+            public boolean onMove(@NonNull @NotNull RecyclerView recyclerView, @NonNull @NotNull RecyclerView.ViewHolder viewHolder, @NonNull @NotNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull @NotNull RecyclerView.ViewHolder viewHolder, int direction) {
+                db.bagDAO().delete(bagAdapter.GetBagAt(viewHolder.getAdapterPosition()));
+                Toast.makeText(globalContext, "Bag Deleted", Toast.LENGTH_SHORT).show();
+            }
+        }).attachToRecyclerView(bagRecyclerView);
+
     }
 
     // code for the top bar

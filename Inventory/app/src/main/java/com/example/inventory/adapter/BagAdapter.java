@@ -33,6 +33,10 @@ public class BagAdapter extends RecyclerView.Adapter<BagAdapter.BagViewHolder> {
         notifyDataSetChanged();
     }
 
+    public Bag GetBagAt(int position){
+        return bagList.get(position);
+    }
+
     @NonNull
     @Override
     public BagAdapter.BagViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
