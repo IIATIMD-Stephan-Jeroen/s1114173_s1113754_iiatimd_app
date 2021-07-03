@@ -73,7 +73,6 @@
         android:text="ADD BAG"
         android:backgroundTint="@color/secondary"
         android:shadowColor="@color/secondary"
-        android:background="@color/secondary"
         android:fontFamily="@font/sansation"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

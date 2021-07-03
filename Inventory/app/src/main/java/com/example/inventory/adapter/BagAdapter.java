@@ -21,8 +21,11 @@ public class BagAdapter extends RecyclerView.Adapter<BagAdapter.BagViewHolder> {
     private Context context;
     private List<Bag> bagList;
 
-    public BagAdapter(Context context){
+    private OnBagListener mOnBagListener;
+
+    public BagAdapter(Context context, OnBagListener onBagListener){
         this.context = context;
+        this.mOnBagListener = onBagListener;
     }
 
     public void setBagList(List<Bag> bagList){
@@ -35,7 +38,7 @@ public class BagAdapter extends RecyclerView.Adapter<BagAdapter.BagViewHolder> {
     public BagAdapter.BagViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View v = LayoutInflater.from(context).inflate(R.layout.bag_card, parent, false);
-        return new BagViewHolder(v);
+        return new BagViewHolder(v, mOnBagListener);
     }
 
     @Override
@@ -55,16 +58,30 @@ public class BagAdapter extends RecyclerView.Adapter<BagAdapter.BagViewHolder> {
         }
     }
 
-    public static class BagViewHolder extends RecyclerView.ViewHolder{
+    public static class BagViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public TextView bagName;
         public TextView bagDesc;
 
-        public BagViewHolder(View v){
+        OnBagListener onBagListener;
+
+        public BagViewHolder(View v, OnBagListener onBagListener){
             super(v);
             bagName = v.findViewById(R.id.bagName);
             bagDesc = v.findViewById(R.id.bagDescription);
+            this.onBagListener = onBagListener;
+
+            v.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View v) {
+            onBagListener.onBagClick(getAdapterPosition());
+        }
+    }
+
+    public interface OnBagListener{
+        void onBagClick(int position);
     }
 
 

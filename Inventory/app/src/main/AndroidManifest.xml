@@ -10,10 +10,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true">
 
-        <activity android:name=".activity.ItemDetailActivity" />
-        <activity android:name=".activity.ItemOverviewActivity"></activity>
+        <activity
+            android:name=".activity.ItemDetailActivity"
+            android:label="ITEM DETAIL"
+            android:parentActivityName=".activity.ItemOverviewActivity"
+            android:theme="@style/Theme.Inventory"
+        />
+        <activity
+            android:name=".activity.ItemOverviewActivity"
+            android:label="ALL ITEMS"
+            android:parentActivityName=".activity.BagInventoryActivity"
+            android:theme="@style/Theme.Inventory" />
         <activity android:name=".activity.FilterInventoryActivity" />
-        <activity android:name=".activity.BagInventoryActivity" />
+
+        <activity
+            android:name=".activity.BagInventoryActivity"
+            android:label="INVENTORY"
+            android:parentActivityName=".activity.MainActivity"
+            android:theme="@style/Theme.Inventory" />
 
         <activity
             android:name=".activity.AddBagActivity"
@@ -40,11 +54,18 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
+
         <activity
             android:name=".activity.LoginActivity"
-            android:theme="@style/Theme.Login" />
+            android:theme="@style/Theme.Login">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
+
     </application>
 
 </manifest>
