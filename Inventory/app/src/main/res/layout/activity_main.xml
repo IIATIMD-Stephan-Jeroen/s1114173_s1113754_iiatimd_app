@@ -29,4 +29,20 @@
         app:layout_constraintVertical_bias="0.958"
         app:srcCompat="@drawable/ic_add" />
 
+    <TextView
+        android:id="@+id/mainActivityEmptySetText"
+        android:layout_width="332dp"
+        android:layout_height="333dp"
+        android:fontFamily="@font/sansation"
+        android:textAlignment="center"
+        android:visibility="invisible"
+        android:textSize="20dp"
+        android:textColor="@color/primary"
+        android:text="@string/main_activity_empty_set_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center_horizontal" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
