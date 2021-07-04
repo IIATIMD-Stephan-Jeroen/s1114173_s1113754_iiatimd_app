@@ -18,7 +18,6 @@
         <activity
             android:name=".activity.ItemOverviewActivity"
             android:label="ALL ITEMS"
-            android:parentActivityName=".activity.BagInventoryActivity"
             android:theme="@style/Theme.Inventory" />
         <activity android:name=".activity.FilterInventoryActivity" />
 

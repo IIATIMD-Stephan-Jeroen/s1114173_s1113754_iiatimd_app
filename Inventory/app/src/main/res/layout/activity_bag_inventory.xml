@@ -54,4 +54,20 @@
         app:layout_constraintVertical_bias="0.934"
         app:srcCompat="@drawable/ic_add" />
 
+    <TextView
+        android:id="@+id/bagInventoryActivityEmptySetText"
+        android:layout_width="332dp"
+        android:layout_height="333dp"
+        android:fontFamily="@font/sansation"
+        android:gravity="center_horizontal"
+        android:text="@string/bag_item_overview_empty_set_text"
+        android:textAlignment="center"
+        android:textColor="@color/primary"
+        android:textSize="20dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

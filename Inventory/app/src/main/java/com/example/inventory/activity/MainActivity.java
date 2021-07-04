@@ -19,6 +19,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -49,7 +50,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private RecyclerView bagRecyclerView;
     private FloatingActionButton addNewBagButton;
     private Context globalContext;
+    public TextView noBags;
 
+    private List<Bag> bagList;
     AppDatabase db;
 
     public boolean needToRefresh = false;
@@ -66,11 +69,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         globalContext = this.getApplicationContext();
         db = AppDatabase.getInstance(globalContext);
         bagAdapter = new BagAdapter(globalContext, this);
-//        bagAdapter.setBagList(db.bagDAO().getAllBags());
-        List<Bag> bagList = db.bagDAO().getAllBags();
-        bagAdapter.setBagList(bagList);
-
         setContentView(R.layout.activity_main);
+
+        noBags = findViewById(R.id.mainActivityEmptySetText);
+        bagList = db.bagDAO().getAllBags();
+        bagAdapter.setBagList(bagList);
+        checkUserFeedbackNeeded();
+
+
+
+
 
         addNewBagButton = findViewById(R.id.addNewBagButton);
         addNewBagButton.setOnClickListener(this);
@@ -91,6 +99,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onSwiped(@NonNull @NotNull RecyclerView.ViewHolder viewHolder, int direction) {
                 db.bagDAO().delete(bagAdapter.GetBagAt(viewHolder.getAdapterPosition()));
                 Toast.makeText(globalContext, "Bag Deleted", Toast.LENGTH_SHORT).show();
+                bagList = db.bagDAO().getAllBags();
+                bagAdapter.setBagList(bagList);
+                checkUserFeedbackNeeded();
             }
         }).attachToRecyclerView(bagRecyclerView);
     }
@@ -112,6 +123,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(new Intent(MainActivity.this, ProfileActivity.class));
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void checkUserFeedbackNeeded(){
+        if(bagList.isEmpty()){
+            this.noBags.setVisibility(View.VISIBLE);
+        }else {
+            this.noBags.setVisibility(View.INVISIBLE);
+        }
     }
 
     public void addNewItem(int id, String name, String cost, String currency, String type, String weight, String damage, String damage_type, String property_1, String property_2, String property_3, String property_4) {
@@ -144,7 +163,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 @Override
                 public void onActivityResult(ActivityResult result) {
                     AppDatabase db = AppDatabase.getInstance(globalContext);
-                    bagAdapter.setBagList(db.bagDAO().getAllBags());
+                    bagList = db.bagDAO().getAllBags();
+                    bagAdapter.setBagList(bagList);
+                    checkUserFeedbackNeeded();
                 }
             }
     );

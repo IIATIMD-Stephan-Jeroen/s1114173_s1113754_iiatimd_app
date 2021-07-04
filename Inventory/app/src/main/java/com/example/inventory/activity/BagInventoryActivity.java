@@ -43,12 +43,14 @@ public class BagInventoryActivity extends AppCompatActivity implements View.OnCl
     private List<Bagitem> items;
     private Boolean onCreateCalled = false;
     private Context mContext;
+    private TextView noItems;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         onCreateCalled = true;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bag_inventory);
+        noItems = findViewById(R.id.bagInventoryActivityEmptySetText);
         Intent intent = getIntent();
         this.bagName = intent.getStringExtra("bag_name");
         this.bagId = intent.getStringExtra("bag_id");
@@ -62,6 +64,7 @@ public class BagInventoryActivity extends AppCompatActivity implements View.OnCl
 
         items = getAllItems();
         bagitemAdapter.setItems(items);
+        checkUserFeedbackNeeded();
         initRecyclerView();
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
             @Override
@@ -73,12 +76,23 @@ public class BagInventoryActivity extends AppCompatActivity implements View.OnCl
             public void onSwiped(@NonNull @NotNull RecyclerView.ViewHolder viewHolder, int direction) {
                 AppDatabase db = AppDatabase.getInstance(mContext);
                 db.bagitemDAO().delete(bagitemAdapter.GetBagItemAt(viewHolder.getAdapterPosition()));
+                items = getAllItems();
+                bagitemAdapter.setItems(items);
+                checkUserFeedbackNeeded();
                 Toast.makeText(mContext, "Item Deleted", Toast.LENGTH_SHORT).show();
             }
         }).attachToRecyclerView(bagItemRecyclerView);
 
         inventoryHolder.setText(bagName);
         addItemToBagButton.setOnClickListener(this);
+    }
+
+    public void checkUserFeedbackNeeded(){
+        if(items.isEmpty()){
+            this.noItems.setVisibility(View.VISIBLE);
+        }else {
+            this.noItems.setVisibility(View.INVISIBLE);
+        }
     }
 
     @Override
@@ -91,7 +105,9 @@ public class BagInventoryActivity extends AppCompatActivity implements View.OnCl
     @Override
     public void onResume() {
         super.onResume();
-        bagitemAdapter.setItems(getAllItems());
+        items = getAllItems();
+        bagitemAdapter.setItems(items);
+        checkUserFeedbackNeeded();
     }
 
 
