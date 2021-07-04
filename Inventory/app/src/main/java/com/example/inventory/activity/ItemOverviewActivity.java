@@ -35,7 +35,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ItemOverviewActivity extends AppCompatActivity {
+public class ItemOverviewActivity extends AppCompatActivity implements View.OnClickListener {
     private RecyclerView itemRecyclerView;
     private ItemAdapter itemAdapter;
     private BagitemAdapter bagitemAdapter;
@@ -56,38 +56,23 @@ public class ItemOverviewActivity extends AppCompatActivity {
         toggleCommunityItemsSwitch = findViewById(R.id.toggleCommunityItems);
         addNewCommunityItemButton = findViewById(R.id.addCommunityItemButton);
 
-        toggleCommunityItemsSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        mContext = this.getApplicationContext();
+        initSwitchBehaviour();
+
+        addNewCommunityItemButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                toggled = !toggled;
-                if(toggled && isNetworkConnected()) {
-                    addNewCommunityItemButton.setVisibility(View.VISIBLE);
-                } else if(!isNetworkConnected()){
-                    toggled = false;
-                    toggleCommunityItemsSwitch.setChecked(false);
-                    addNewCommunityItemButton.setVisibility(View.GONE);
-
-                    new AlertDialog.Builder(ItemOverviewActivity.this)
-                            .setTitle("No internet connection")
-                            .setMessage("You need to be connected to the internet to use community items")
-                            .setPositiveButton("OK",null)
-                            .setIcon(android.R.drawable.ic_delete)
-                            .show();
-                } else{
-                    addNewCommunityItemButton.setVisibility(View.GONE);
-                }
-
+            public void onClick(View view) {
+                Intent nIntent = new Intent(mContext, AddCommunityItemActivity.class);
+                startActivityWithCallbackToCommunity.launch(nIntent);
             }
         });
-        mContext = this.getApplicationContext();
-
 
         Intent intent = getIntent();
         bagId = Integer.valueOf(intent.getStringExtra("bag_id"));
         this.itemAdapter = new ItemAdapter(mContext, String.valueOf(bagId));
         this.bagitemAdapter = new BagitemAdapter(mContext, bagId);
 
-        items = getAllItems();
+        items = getAllItems(toggled);
         itemAdapter.setItems(items);
         initRecyclerView();
         EditText editText = findViewById(R.id.editTextItemName);
@@ -109,6 +94,47 @@ public class ItemOverviewActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    ActivityResultLauncher<Intent> startActivityWithCallbackToCommunity = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    items = getAllItems(true);
+                    itemAdapter.setItems(items);
+                }
+            }
+    );
+
+    private void initSwitchBehaviour(){
+        toggleCommunityItemsSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                toggled = !toggled;
+                if(toggled && isNetworkConnected()) {
+                    addNewCommunityItemButton.setVisibility(View.VISIBLE);
+                    items = getAllItems(toggled);
+                    itemAdapter.setItems(items);
+                } else if(!isNetworkConnected()){
+                    toggled = false;
+                    toggleCommunityItemsSwitch.setChecked(false);
+                    addNewCommunityItemButton.setVisibility(View.GONE);
+
+                    new AlertDialog.Builder(ItemOverviewActivity.this)
+                            .setTitle("No internet connection")
+                            .setMessage("You need to be connected to the internet to use community items")
+                            .setPositiveButton("OK",null)
+                            .setIcon(android.R.drawable.ic_delete)
+                            .show();
+                } else{
+                    addNewCommunityItemButton.setVisibility(View.GONE);
+                    items = getAllItems(toggled);
+                    itemAdapter.setItems(items);
+                }
+
+            }
+        });
     }
 
     private boolean isNetworkConnected() {
@@ -133,7 +159,7 @@ public class ItemOverviewActivity extends AppCompatActivity {
     @Override
     public void onResume() {
         super.onResume();
-        itemAdapter.setItems(getAllItems());
+        itemAdapter.setItems(getAllItems(toggled));
     }
 
 
@@ -151,8 +177,19 @@ public class ItemOverviewActivity extends AppCompatActivity {
         itemRecyclerView.setAdapter(itemAdapter);
     }
 
-    public List<Item> getAllItems() {
+    public List<Item> getAllItems(boolean showCommunityItems) {
         AppDatabase db = AppDatabase.getInstance(this.getApplicationContext());
-        return db.itemDAO().getAllItems();
+        if(showCommunityItems){
+            return db.itemDAO().getAllItems();
+        }else{
+            return db.itemDAO().getAllItemConditionally(false);
+        }
+
+
+    }
+
+    @Override
+    public void onClick(View view) {
+
     }
 }

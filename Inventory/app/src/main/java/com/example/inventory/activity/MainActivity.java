@@ -6,7 +6,6 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -133,7 +132,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    public void addNewItem(int id, String name, String cost, String currency, String type, String weight, String damage, String damage_type, String property_1, String property_2, String property_3, String property_4) {
+    public void addNewItem(int id, String name, String cost, String currency, String type, String weight, boolean communityItem, String damage, String damage_type, String property_1, String property_2, String property_3, String property_4) {
         AppDatabase db = AppDatabase.getInstance(this.getApplicationContext());
         Item item = new Item();
         item.id = id;
@@ -148,12 +147,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         item.property_2 = property_2;
         item.property_3 = property_3;
         item.property_4 = property_4;
+        item.community_item = communityItem;
         db.itemDAO().insertItem(item);
     }
 
     public List<Item> getAllItems() {
         AppDatabase db = AppDatabase.getInstance(this.getApplicationContext());
-        return db.itemDAO().getAllItems();
+        return db.itemDAO().getAllItemConditionally(false);
     }
 
     //super ugly over-complicated code to update recycler view after add activity is closed
@@ -227,6 +227,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                     String itemCurrency = objectInArray.getString("currency");
                                     String itemType = objectInArray.getString("type");
                                     String itemWeight = objectInArray.getString("weight");
+                                    boolean communityItem = objectInArray.getBoolean("communityItem");
 
                                     try {
                                         JSONObject relationInfo = objectInArray.getJSONObject("relationInfo");
@@ -236,10 +237,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                         String property_2 = relationInfo.getString("property_2");
                                         String property_3 = relationInfo.getString("property_3");
                                         String property_4 = relationInfo.getString("property_4");
-                                        addNewItem(itemId, itemName, itemCost, itemCurrency, itemType, itemWeight, damage, damage_type, property_1, property_2, property_3, property_4);
+                                        addNewItem(itemId, itemName, itemCost, itemCurrency, itemType, itemWeight, communityItem, damage, damage_type, property_1, property_2, property_3, property_4);
+
 
                                     }catch (JSONException e) {
-                                        addNewItem(itemId, itemName, itemCost, itemCurrency, itemType, itemWeight, "", "","","","","");
+
+                                        addNewItem(itemId, itemName, itemCost, itemCurrency, itemType, itemWeight, communityItem, "", "","","","","");
                                     }
 
 
