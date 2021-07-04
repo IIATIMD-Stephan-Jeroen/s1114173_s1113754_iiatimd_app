@@ -10,11 +10,16 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.TextView;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.data.AppDatabase;
 import com.example.data.Bag;
 import com.example.data.Item;
 import com.example.inventory.R;
@@ -31,9 +36,11 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
 
     private List<Item> items;
     public Context mContext;
+    public String bagId;
 
-    public ItemAdapter(Context context) {
+    public ItemAdapter(Context context, String bagId) {
         this.mContext = context;
+        this.bagId = bagId;
     }
 
     public void setItems(List<Item> itemList){
@@ -45,14 +52,20 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
 
         public TextView itemName;
         public TextView itemId;
+        public TextView itemBagId;
         public Item item;
         public Context mContext;
+        public TextView itemAmount;
+        public TextView communityItemCheck;
 
         public ItemViewHolder(View v){
             super(v);
             v.setOnClickListener((View.OnClickListener) this);
             itemName = v.findViewById(R.id.itemName);
             itemId = v.findViewById(R.id.itemId);
+            itemBagId = v.findViewById(R.id.itemBagId);
+            itemAmount = v.findViewById(R.id.itemAmount);
+            communityItemCheck = v.findViewById(R.id.communityItemCheck);
             mContext = v.getContext();
         }
 
@@ -64,6 +77,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         public void onClick( View v) {
             Intent intent = new Intent(mContext, ItemDetailActivity.class);
             intent.putExtra("itemId", itemId.getText());
+            intent.putExtra("bag_id", itemBagId.getText());
             mContext.startActivity(intent);
         }
     }
@@ -81,6 +95,14 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
     public void onBindViewHolder(@NonNull @NotNull ItemAdapter.ItemViewHolder holder, int position) {
         holder.itemName.setText(items.get(position).getName());
         holder.itemId.setText(String.valueOf(items.get(position).getId()));
+        holder.itemBagId.setText(bagId);
+        AppDatabase db = AppDatabase.getInstance(mContext);
+
+        try{
+            holder.itemAmount.setText(String.valueOf(db.bagitemDAO().getBagItemById(items.get(position).getId(), Integer.valueOf(bagId)).getAmount()));
+        } catch(Exception e){
+            //
+        }
 
     }
 

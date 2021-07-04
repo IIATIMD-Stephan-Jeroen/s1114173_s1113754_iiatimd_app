@@ -17,6 +17,9 @@ public interface ItemDAO {
     @Query("SELECT * FROM item WHERE id = :item_id")
     Item getItemById(int item_id);
 
+    @Query("SELECT * FROM item WHERE community_item = :state")
+    List<Item> getAllItemConditionally(boolean state);
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertItem(Item... items);
 }
