@@ -2,6 +2,7 @@ package com.example.inventory.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.data.AppDatabase;
 import com.example.data.Bagitem;
@@ -38,7 +40,7 @@ public class ItemDetailActivity extends AppCompatActivity implements View.OnClic
     Button saveButton;
 
     EditText itemAmountInput;
-
+    public Context mContext;
     Item item;
     int itemId;
     int bagId;
@@ -53,6 +55,7 @@ public class ItemDetailActivity extends AppCompatActivity implements View.OnClic
         setContentView(R.layout.activity_item_detail);
         db = AppDatabase.getInstance(this.getApplicationContext());
         Intent intent = getIntent();
+        mContext = this.getApplicationContext();
         itemId = Integer.valueOf(intent.getStringExtra("itemId"));
         bagId = Integer.valueOf(intent.getStringExtra("bag_id"));
 
@@ -118,10 +121,12 @@ public class ItemDetailActivity extends AppCompatActivity implements View.OnClic
                 if(itemAmount == 0) {
                     try{
                         db.bagitemDAO().delete(bagitem);
+                        Toast.makeText(mContext, "Item Deleted", Toast.LENGTH_SHORT).show();
                     }catch (Exception e) {}
                 } else {
                     Bagitem nBagitem = new Bagitem(itemId, itemAmount, bagId);
                     db.bagitemDAO().insertBagItem(nBagitem);
+                    Toast.makeText(mContext, "Item Added!", Toast.LENGTH_SHORT).show();
                 }
                 finish();
             }
@@ -167,7 +172,7 @@ public class ItemDetailActivity extends AppCompatActivity implements View.OnClic
 
         itemWeight.setText(item.getWeight());
 
-        if(item.getDamage().length() == 0 || item.getDamage().equals("null") || item.getDamage().equals("")) {
+        if(item.getDamage().length() == 0 || item.getDamage().equals("null") || item.getDamage().equals("") || item.getDamage().equals("None")) {
             itemDamage.setVisibility(View.GONE);
             itemHeaderDamage.setVisibility(View.GONE);
         } else {
@@ -178,18 +183,18 @@ public class ItemDetailActivity extends AppCompatActivity implements View.OnClic
 
         String properties = "";
 
-        if(item.getProperty_1() != null && !item.getProperty_1().equals("null") && !item.getProperty_1().equals("")) {
+        if(item.getProperty_1() != null && !item.getProperty_1().equals("null") && !item.getProperty_1().equals("") && !item.getProperty_1().equals("None")) {
             properties += item.getProperty_1();
         }
-        if(item.getProperty_2() != null && !item.getProperty_2().equals("null") && !item.getProperty_2().equals("")) {
+        if(item.getProperty_2() != null && !item.getProperty_2().equals("null") && !item.getProperty_2().equals("") && !item.getProperty_2().equals("None")) {
             properties += "  |  ";
             properties += item.getProperty_2();
         }
-        if(item.getProperty_3() != null && !item.getProperty_3().equals("null") && !item.getProperty_3().equals("")) {
+        if(item.getProperty_3() != null && !item.getProperty_3().equals("null") && !item.getProperty_3().equals("") && !item.getProperty_3().equals("None")) {
             properties += "  |  ";
             properties += item.getProperty_3();
         }
-        if(item.getProperty_4() != null && !item.getProperty_4().equals("null") && !item.getProperty_4().equals("")) {
+        if(item.getProperty_4() != null && !item.getProperty_4().equals("null") && !item.getProperty_4().equals("") && !item.getProperty_4().equals("None")) {
             properties += "  |  ";
             properties += item.getProperty_4();
         }

@@ -7,4 +7,6 @@
 
     <string name="main_activity_empty_set_text">You have no bags :( \n\nClick on the button in the right bottom corner to add one!</string>
     <string name="bag_item_overview_empty_set_text">You have no items in your bag :( \n\nClick on the button in the right bottom corner to add one!</string>
+
+    <string name="add_community_item_introduction">Create and share your own items with our awesome community</string>
 </resources>

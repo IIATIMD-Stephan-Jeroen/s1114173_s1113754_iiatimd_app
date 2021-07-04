@@ -3,45 +3,46 @@
     package="com.example.inventory">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true">
-
+        <activity
+            android:name=".activity.AddCommunityItemActivity"
+            android:label="ADD COMMUNITY ITEM"
+            android:theme="@style/Theme.Inventory"
+            />
         <activity
             android:name=".activity.ItemDetailActivity"
             android:label="ITEM DETAIL"
-            android:theme="@style/Theme.Inventory"
-        />
+            android:theme="@style/Theme.Inventory" />
         <activity
             android:name=".activity.ItemOverviewActivity"
             android:label="ALL ITEMS"
             android:theme="@style/Theme.Inventory" />
         <activity android:name=".activity.FilterInventoryActivity" />
-
         <activity
             android:name=".activity.BagInventoryActivity"
             android:label="INVENTORY"
             android:parentActivityName=".activity.MainActivity"
             android:theme="@style/Theme.Inventory" />
-
         <activity
             android:name=".activity.AddBagActivity"
             android:label="ADD BAG"
             android:parentActivityName=".activity.MainActivity"
             android:theme="@style/Theme.Inventory" />
-
         <activity
             android:name=".activity.RegisterActivity"
             android:theme="@style/Theme.Login" />
-
         <activity
             android:name=".activity.ProfileActivity"
             android:parentActivityName=".activity.MainActivity"
             android:theme="@style/Theme.Inventory" />
-
         <activity
             android:name=".activity.MainActivity"
             android:label="BAGS"
@@ -53,7 +54,6 @@
 <!--                <category android:name="android.intent.category.LAUNCHER" />-->
 <!--            </intent-filter>-->
         </activity>
-
         <activity
             android:name=".activity.LoginActivity"
             android:theme="@style/Theme.Login">
@@ -63,7 +63,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>
