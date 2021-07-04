@@ -70,6 +70,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         List<Bag> bagList = db.bagDAO().getAllBags();
         bagAdapter.setBagList(bagList);
 
+        String token = db.userDAO().getAllUsers().get(0).getCookie();
+        Log.d(TAG, "onCreate: " + token);
+
         setContentView(R.layout.activity_main);
 
         addNewBagButton = findViewById(R.id.addNewBagButton);

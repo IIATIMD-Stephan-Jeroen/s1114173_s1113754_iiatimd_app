@@ -12,14 +12,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.api.model.Login;
-import com.example.api.model.User;
+import com.example.api.model.ApiUser;
 import com.example.api.service.UserClient;
 import com.example.data.AppDatabase;
+import com.example.data.User;
 import com.example.inventory.R;
 import com.example.inventory.manager.PrefManager;
 
-import okhttp3.Headers;
-import okhttp3.internal.http2.Header;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -29,6 +28,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 
     PrefManager prefManager;
+    com.example.data.User user;
 
     Retrofit.Builder builder = new Retrofit.Builder()
             .baseUrl("https://iiatimd-stephan-jeroen.herokuapp.com/api/")
@@ -74,15 +74,23 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private void login(){
 
         Login login = new Login(mailInput.getText().toString(), passwordInput.getText().toString());
-        Call<User> call = userClient.login(login);
+        Call<ApiUser> call = userClient.login(login);
         
-        call.enqueue(new Callback<User>() {
+        call.enqueue(new Callback<ApiUser>() {
             @Override
-            public void onResponse(Call<User> call, Response<User> response) {
+            public void onResponse(Call<ApiUser> call, Response<ApiUser> response) {
                 if (response.isSuccessful()){
                     prefManager.createLogin();
+
+                    token = response.body().getToken();
+                    Log.d(TAG, "onResponse: " + token);
+
+                    User user = new User(response.body().getName(), response.body().getToken());
+                    db.userDAO().InsertUser(user);
+
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    startActivity(intent);
                 }
                 else{
                     Toast.makeText(LoginActivity.this, "Email or Password is incorrect", Toast.LENGTH_SHORT).show();
@@ -90,7 +98,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             }
 
             @Override
-            public void onFailure(Call<User> call, Throwable t) {
+            public void onFailure(Call<ApiUser> call, Throwable t) {
                 Toast.makeText(LoginActivity.this, "error", Toast.LENGTH_SHORT).show();
             }
         });
