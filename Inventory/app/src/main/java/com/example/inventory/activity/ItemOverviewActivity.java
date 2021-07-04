@@ -5,25 +5,32 @@ import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.View;
 import android.widget.Adapter;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Switch;
 
 import com.example.data.AppDatabase;
 import com.example.data.Item;
 import com.example.inventory.R;
 import com.example.inventory.adapter.BagitemAdapter;
 import com.example.inventory.adapter.ItemAdapter;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,13 +42,43 @@ public class ItemOverviewActivity extends AppCompatActivity {
     private List<Item> items;
     private Context mContext;
 
+    private Switch toggleCommunityItemsSwitch;
+    private FloatingActionButton addNewCommunityItemButton;
     private int bagId;
+
+    private boolean toggled = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_overview);
 
+        toggleCommunityItemsSwitch = findViewById(R.id.toggleCommunityItems);
+        addNewCommunityItemButton = findViewById(R.id.addCommunityItemButton);
+
+        toggleCommunityItemsSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                toggled = !toggled;
+                if(toggled && isNetworkConnected()) {
+                    addNewCommunityItemButton.setVisibility(View.VISIBLE);
+                } else if(!isNetworkConnected()){
+                    toggled = false;
+                    toggleCommunityItemsSwitch.setChecked(false);
+                    addNewCommunityItemButton.setVisibility(View.GONE);
+
+                    new AlertDialog.Builder(ItemOverviewActivity.this)
+                            .setTitle("No internet connection")
+                            .setMessage("You need to be connected to the internet to use community items")
+                            .setPositiveButton("OK",null)
+                            .setIcon(android.R.drawable.ic_delete)
+                            .show();
+                } else{
+                    addNewCommunityItemButton.setVisibility(View.GONE);
+                }
+
+            }
+        });
         mContext = this.getApplicationContext();
 
 
@@ -72,6 +109,12 @@ public class ItemOverviewActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private boolean isNetworkConnected() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        return cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnected();
     }
 
     private void filter(String text) {
