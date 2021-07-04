@@ -6,13 +6,12 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-@Database(entities = {Bag.class, Item.class, User.class, Bagitem.class}, version = 19)
+@Database(entities = {Bag.class, Item.class, User.class}, version = 15)
 public abstract class AppDatabase extends RoomDatabase {
 
     public abstract ItemDAO itemDAO();
     public abstract BagDAO bagDAO();
     public abstract UserDAO userDAO();
-    public abstract BagitemDAO bagitemDAO();
 
     private static AppDatabase instance;
 
