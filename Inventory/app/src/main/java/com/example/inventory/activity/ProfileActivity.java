@@ -4,19 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.util.Log;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.api.model.User;
 import com.example.api.service.UserClient;
+import com.example.data.AppDatabase;
 import com.example.inventory.R;
 import com.example.inventory.manager.PrefManager;
 
-import org.w3c.dom.Text;
-
+import okhttp3.Headers;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -27,6 +25,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ProfileActivity extends AppCompatActivity implements View.OnClickListener{
 
     private static String token;
+    AppDatabase db;
 
     PrefManager prefManager;
 
@@ -53,45 +52,43 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         getSupportActionBar().setTitle("Profile");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        db = AppDatabase.getInstance(this.getApplicationContext());
+
         profileName = findViewById(R.id.profileName);
         profileToken = findViewById(R.id.profileToken);
         logoutButton = findViewById(R.id.logoutButton);
 
+        token = db.userDAO().getAllUsers().get(0).getCookie();
+        String name = db.userDAO().getAllUsers().get(0).getName();
+        String cookie = token.substring(3);
+
+        profileToken.setText(cookie);
+        profileName.setText(name);
+
         prefManager = new PrefManager(this.getApplicationContext());
 
-        setUserText();
         logoutButton.setOnClickListener(this);
+
+        getUser(cookie);
     }
 
-    private void setUserText(){
+    private void getUser(String token){
+        Call<ResponseBody> call = userClient.getUser(token);
 
-        Call<User> call = userClient.getUser();
-        Log.d(TAG, "setUserText: " + call.toString());
-
-        call.enqueue(new Callback<User>() {
+        call.enqueue(new Callback<ResponseBody>() {
             @Override
-            public void onResponse(Call<User> call, Response<User> response) {
-                if(response.isSuccessful()){
-                    Log.d(TAG, "onResponse: " + response.toString());
-                }
-                else {
-                    Log.d(TAG, "onResponse: Fail " + response.toString());
-                }
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                Log.d(TAG, "onResponse: Succes " + response.toString());
+                Headers headers = response.headers();
+                Log.d(TAG, "onResponse: " + headers);
             }
 
             @Override
-            public void onFailure(Call<User> call, Throwable t) {
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
                 Log.d(TAG, "onFailure: Fail");
-                Toast.makeText(ProfileActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
             }
         });
-
     }
-
-    private void getStuff(){
-        userClient.getSecret(token);
-    }
-
 
     @Override
     public void onClick(View v) {

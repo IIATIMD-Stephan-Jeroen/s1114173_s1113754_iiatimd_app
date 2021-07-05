@@ -13,21 +13,12 @@ public class User {
     @ColumnInfo
     private String cookie;
 
-    @ColumnInfo
-    private String firstFavItem;
-
-    @ColumnInfo
-    private String secondFavItem;
-
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     private int id;
 
-    public User(String name, String cookie, String firstFavItem, String secondFavItem, int id){
+    public User(String name, String cookie){
         this.name = name;
         this.cookie = cookie;
-        this.firstFavItem = firstFavItem;
-        this.secondFavItem = secondFavItem;
-        this.id = id;
     }
 
     public String getName() {
@@ -44,22 +35,6 @@ public class User {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getFirstFavItem() {
-        return firstFavItem;
-    }
-
-    public void setFirstFavItem(String firstFavItem) {
-        this.firstFavItem = firstFavItem;
-    }
-
-    public String getSecondFavItem() {
-        return secondFavItem;
-    }
-
-    public void setSecondFavItem(String secondFavItem) {
-        this.secondFavItem = secondFavItem;
     }
 
     public String getCookie() {
