@@ -75,8 +75,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bagAdapter.setBagList(bagList);
         checkUserFeedbackNeeded();
 
-        setContentView(R.layout.activity_main);
-
         addNewBagButton = findViewById(R.id.addNewBagButton);
         addNewBagButton.setOnClickListener(this);
 
