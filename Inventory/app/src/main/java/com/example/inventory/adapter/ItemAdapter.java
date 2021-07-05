@@ -65,7 +65,6 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
             itemId = v.findViewById(R.id.itemId);
             itemBagId = v.findViewById(R.id.itemBagId);
             itemAmount = v.findViewById(R.id.itemAmount);
-            communityItemCheck = v.findViewById(R.id.communityItemCheck);
             mContext = v.getContext();
         }
 
