@@ -54,22 +54,11 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
         db = AppDatabase.getInstance(this.getApplicationContext());
 
-        profileName = findViewById(R.id.profileName);
-        profileToken = findViewById(R.id.profileToken);
         logoutButton = findViewById(R.id.logoutButton);
-
-        token = db.userDAO().getAllUsers().get(0).getCookie();
-        String name = db.userDAO().getAllUsers().get(0).getName();
-        String cookie = token.substring(3);
-
-        profileToken.setText(cookie);
-        profileName.setText(name);
 
         prefManager = new PrefManager(this.getApplicationContext());
 
         logoutButton.setOnClickListener(this);
-
-        getUser(cookie);
     }
 
     private void getUser(String token){
