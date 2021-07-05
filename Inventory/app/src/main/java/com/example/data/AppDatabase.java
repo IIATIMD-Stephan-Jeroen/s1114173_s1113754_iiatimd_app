@@ -12,7 +12,6 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract ItemDAO itemDAO();
     public abstract BagDAO bagDAO();
     public abstract UserDAO userDAO();
-    public abstract BagitemDAO bagitemDAO();
 
     private static AppDatabase instance;
 

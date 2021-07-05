@@ -10,8 +10,10 @@ import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.api.model.User;
 import com.example.api.service.UserClient;
 import com.example.inventory.R;
+import com.example.inventory.manager.PrefManager;
 
 import org.w3c.dom.Text;
 
@@ -22,7 +24,11 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class ProfileActivity extends AppCompatActivity {
+public class ProfileActivity extends AppCompatActivity implements View.OnClickListener{
+
+    private static String token;
+
+    PrefManager prefManager;
 
     private static final String TAG = "ProfileActivity";
 
@@ -37,6 +43,8 @@ public class ProfileActivity extends AppCompatActivity {
     TextView profileName;
     TextView profileToken;
 
+    Button logoutButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,28 +55,48 @@ public class ProfileActivity extends AppCompatActivity {
 
         profileName = findViewById(R.id.profileName);
         profileToken = findViewById(R.id.profileToken);
+        logoutButton = findViewById(R.id.logoutButton);
+
+        prefManager = new PrefManager(this.getApplicationContext());
 
         setUserText();
+        logoutButton.setOnClickListener(this);
     }
 
     private void setUserText(){
 
-        Call<ResponseBody> call = userClient.getToken();
+        Call<User> call = userClient.getUser();
         Log.d(TAG, "setUserText: " + call.toString());
 
-        call.enqueue(new Callback<ResponseBody>() {
+        call.enqueue(new Callback<User>() {
             @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                profileToken.setText(call.toString());
+            public void onResponse(Call<User> call, Response<User> response) {
+                if(response.isSuccessful()){
+                    Log.d(TAG, "onResponse: " + response.toString());
+                }
+                else {
+                    Log.d(TAG, "onResponse: Fail " + response.toString());
+                }
             }
 
             @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
+            public void onFailure(Call<User> call, Throwable t) {
+                Log.d(TAG, "onFailure: Fail");
                 Toast.makeText(ProfileActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
             }
         });
 
     }
 
+    private void getStuff(){
+        userClient.getSecret(token);
+    }
 
+
+    @Override
+    public void onClick(View v) {
+        prefManager.clearSession();
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
 }
