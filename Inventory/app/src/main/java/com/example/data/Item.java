@@ -42,6 +42,17 @@ public class Item {
     @ColumnInfo(name = "property_4")
     public String property_4;
 
+    @ColumnInfo(name = "community_item")
+    public boolean community_item;
+
+    public boolean isCommunity_item() {
+        return community_item;
+    }
+
+    public void setCommunity_item(boolean community_item) {
+        this.community_item = community_item;
+    }
+
     public String getName() {
         return name;
     }

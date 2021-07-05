@@ -15,18 +15,65 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/itemRecyclerView"
-                android:layout_width="411dp"
-                android:layout_height="589dp" />
-
-            <EditText
-                android:id="@+id/editTextItemName"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="88dp"
-                android:ems="10"
-                android:hint="Search"
-                android:inputType="textPersonName" />
+                android:layout_height="596dp">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/itemRecyclerView"
+                    android:layout_width="410dp"
+                    android:layout_height="556dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1.0"
+                    tools:layout_editor_absoluteX="0dp" />
+
+                <Switch
+                    android:id="@+id/toggleCommunityItems"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Community items"
+                    app:layout_constraintBottom_toTopOf="@+id/itemRecyclerView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.996"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1.0" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp">
+
+                <EditText
+                    android:id="@+id/editTextItemName"
+                    android:layout_width="287dp"
+                    android:layout_height="62dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginLeft="4dp"
+                    android:ems="10"
+                    android:hint="Search"
+                    android:inputType="textPersonName"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.394" />
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/addCommunityItemButton"
+                    android:layout_width="58dp"
+                    android:layout_height="54dp"
+                    android:clickable="true"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.757"
+                    app:layout_constraintStart_toEndOf="@+id/editTextItemName"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.357"
+                    app:srcCompat="@drawable/ic_add" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
         </LinearLayout>
     </ScrollView>
 

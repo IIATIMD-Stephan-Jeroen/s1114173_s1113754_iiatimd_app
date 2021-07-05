@@ -6,7 +6,6 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,6 +18,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -49,7 +49,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private RecyclerView bagRecyclerView;
     private FloatingActionButton addNewBagButton;
     private Context globalContext;
+    public TextView noBags;
 
+    private List<Bag> bagList;
     AppDatabase db;
 
     public boolean needToRefresh = false;
@@ -66,14 +68,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         globalContext = this.getApplicationContext();
         db = AppDatabase.getInstance(globalContext);
         bagAdapter = new BagAdapter(globalContext, this);
-//        bagAdapter.setBagList(db.bagDAO().getAllBags());
-        List<Bag> bagList = db.bagDAO().getAllBags();
+        setContentView(R.layout.activity_main);
+
+        noBags = findViewById(R.id.mainActivityEmptySetText);
+        bagList = db.bagDAO().getAllBags();
         bagAdapter.setBagList(bagList);
+        checkUserFeedbackNeeded();
 
         String token = db.userDAO().getAllUsers().get(0).getCookie();
         Log.d(TAG, "onCreate: " + token);
 
         setContentView(R.layout.activity_main);
+
+
+
 
         addNewBagButton = findViewById(R.id.addNewBagButton);
         addNewBagButton.setOnClickListener(this);
@@ -94,6 +102,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onSwiped(@NonNull @NotNull RecyclerView.ViewHolder viewHolder, int direction) {
                 db.bagDAO().delete(bagAdapter.GetBagAt(viewHolder.getAdapterPosition()));
                 Toast.makeText(globalContext, "Bag Deleted", Toast.LENGTH_SHORT).show();
+                bagList = db.bagDAO().getAllBags();
+                bagAdapter.setBagList(bagList);
+                checkUserFeedbackNeeded();
             }
         }).attachToRecyclerView(bagRecyclerView);
     }
@@ -117,7 +128,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return super.onOptionsItemSelected(item);
     }
 
-    public void addNewItem(int id, String name, String cost, String currency, String type, String weight, String damage, String damage_type, String property_1, String property_2, String property_3, String property_4) {
+    public void checkUserFeedbackNeeded(){
+        if(bagList.isEmpty()){
+            this.noBags.setVisibility(View.VISIBLE);
+        }else {
+            this.noBags.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    public void addNewItem(int id, String name, String cost, String currency, String type, String weight, boolean communityItem, String damage, String damage_type, String property_1, String property_2, String property_3, String property_4) {
         AppDatabase db = AppDatabase.getInstance(this.getApplicationContext());
         Item item = new Item();
         item.id = id;
@@ -132,12 +151,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         item.property_2 = property_2;
         item.property_3 = property_3;
         item.property_4 = property_4;
+        item.community_item = communityItem;
         db.itemDAO().insertItem(item);
     }
 
     public List<Item> getAllItems() {
         AppDatabase db = AppDatabase.getInstance(this.getApplicationContext());
-        return db.itemDAO().getAllItems();
+        return db.itemDAO().getAllItemConditionally(false);
     }
 
     //super ugly over-complicated code to update recycler view after add activity is closed
@@ -147,7 +167,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 @Override
                 public void onActivityResult(ActivityResult result) {
                     AppDatabase db = AppDatabase.getInstance(globalContext);
-                    bagAdapter.setBagList(db.bagDAO().getAllBags());
+                    bagList = db.bagDAO().getAllBags();
+                    bagAdapter.setBagList(bagList);
+                    checkUserFeedbackNeeded();
                 }
             }
     );
@@ -179,6 +201,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent intent = new Intent(this, BagInventoryActivity.class);
         // send bag name to new activity
         intent.putExtra("bag_name", db.bagDAO().getAllBags().get(position).getName());
+        intent.putExtra("bag_id", String.valueOf(db.bagDAO().getAllBags().get(position).getId()));
         startActivity(intent);
     }
 
@@ -208,6 +231,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                     String itemCurrency = objectInArray.getString("currency");
                                     String itemType = objectInArray.getString("type");
                                     String itemWeight = objectInArray.getString("weight");
+                                    boolean communityItem = objectInArray.getBoolean("communityItem");
 
                                     try {
                                         JSONObject relationInfo = objectInArray.getJSONObject("relationInfo");
@@ -217,10 +241,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                         String property_2 = relationInfo.getString("property_2");
                                         String property_3 = relationInfo.getString("property_3");
                                         String property_4 = relationInfo.getString("property_4");
-                                        addNewItem(itemId, itemName, itemCost, itemCurrency, itemType, itemWeight, damage, damage_type, property_1, property_2, property_3, property_4);
+                                        addNewItem(itemId, itemName, itemCost, itemCurrency, itemType, itemWeight, communityItem, damage, damage_type, property_1, property_2, property_3, property_4);
+
 
                                     }catch (JSONException e) {
-                                        addNewItem(itemId, itemName, itemCost, itemCurrency, itemType, itemWeight, "", "","","","","");
+
+                                        addNewItem(itemId, itemName, itemCost, itemCurrency, itemType, itemWeight, communityItem, "", "","","","","");
                                     }
 
 
