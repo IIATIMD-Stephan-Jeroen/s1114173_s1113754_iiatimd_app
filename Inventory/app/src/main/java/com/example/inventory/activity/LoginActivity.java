@@ -28,7 +28,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 
     PrefManager prefManager;
-    com.example.data.User user;
 
     Retrofit.Builder builder = new Retrofit.Builder()
             .baseUrl("https://iiatimd-stephan-jeroen.herokuapp.com/api/")
@@ -46,7 +45,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private EditText mailInput;
     private EditText passwordInput;
 
-    private TextView forgotPasswordButton;
     private TextView signUpButton;
 
     @Override
@@ -58,14 +56,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         prefManager = new PrefManager(this.getApplicationContext());
 
         loginButton = findViewById(R.id.loginButton);
-        forgotPasswordButton = findViewById(R.id.forgotPasswordButton);
         signUpButton = findViewById(R.id.signUpButton);
 
         mailInput = findViewById(R.id.emailInput);
         passwordInput = findViewById(R.id.passwordInput);
 
         loginButton.setOnClickListener(this);
-        forgotPasswordButton.setOnClickListener(this);
         signUpButton.setOnClickListener(this);
     }
 
@@ -111,15 +107,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 login();
                 break;
 
-            case R.id.forgotPasswordButton:
-                Toast.makeText(LoginActivity.this, "Reset Email sent", Toast.LENGTH_SHORT).show();
-                // send stuff to user
-                break;
-
             case R.id.signUpButton:
                 startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
                 break;
-
         }
     }
 
