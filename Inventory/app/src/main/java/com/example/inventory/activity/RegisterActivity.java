@@ -11,7 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.api.model.Register;
-import com.example.api.model.User;
+import com.example.api.model.ApiUser;
 import com.example.api.service.UserClient;
 import com.example.inventory.R;
 
@@ -59,11 +59,11 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     public void Register(){
         Register register = new Register(registerName.getText().toString(), registerEmail.getText().toString(), registerPassword.getText().toString());
-        Call<User> call = userClient.register(register);
+        Call<ApiUser> call = userClient.register(register);
 
-        call.enqueue(new Callback<User>() {
+        call.enqueue(new Callback<ApiUser>() {
             @Override
-            public void onResponse(Call<User> call, Response<User> response) {
+            public void onResponse(Call<ApiUser> call, Response<ApiUser> response) {
                 if (response.isSuccessful()){
                     Toast.makeText(RegisterActivity.this, "Registration successful", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(RegisterActivity.this, MainActivity.class));
@@ -75,7 +75,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             }
 
             @Override
-            public void onFailure(Call<User> call, Throwable t) {
+            public void onFailure(Call<ApiUser> call, Throwable t) {
                 Toast.makeText(RegisterActivity.this, "error", Toast.LENGTH_SHORT).show();
             }
         });

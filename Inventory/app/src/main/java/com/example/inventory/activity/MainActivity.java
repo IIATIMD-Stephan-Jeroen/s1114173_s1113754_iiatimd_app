@@ -75,6 +75,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bagAdapter.setBagList(bagList);
         checkUserFeedbackNeeded();
 
+        String token = db.userDAO().getAllUsers().get(0).getCookie();
+        Log.d(TAG, "onCreate: " + token);
+
+        setContentView(R.layout.activity_main);
 
 
 

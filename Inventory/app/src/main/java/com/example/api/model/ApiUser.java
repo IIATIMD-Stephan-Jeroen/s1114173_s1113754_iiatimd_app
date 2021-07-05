@@ -1,11 +1,10 @@
 package com.example.api.model;
 
-public class User {
+public class ApiUser {
     private int id;
     private String name;
     private String email;
-    private String createdAt;
-    private String updatedAt;
+    private String token;
 
     public int getId(){
         return id;
@@ -31,19 +30,11 @@ public class User {
         this.email = email;
     }
 
-    public String getCreatedAt() {
-        return createdAt;
+    public String getToken() {
+        return token;
     }
 
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public String getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
+    public void setToken(String token) {
+        this.token = token;
     }
 }
